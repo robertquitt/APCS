@@ -1,4 +1,3 @@
 APCS
 ====
-
-My APCS Assignments
+This is the repository for our APCS final project.
