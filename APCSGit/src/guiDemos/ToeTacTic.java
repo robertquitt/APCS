@@ -25,8 +25,8 @@ public class ToeTacTic extends JFrame{
     	Container container = getContentPane();
 
 		JButton button;
+		container.removeAll();
 		for (int i = 0; i < 9; i++) {
-        	container.remove(i);
 			button = new JButton();
 			container.add(button,i);
 			button.addActionListener(new ButtonHandler());
@@ -34,11 +34,13 @@ public class ToeTacTic extends JFrame{
     }
 	public static void main(String[] args) {
 		ToeTacTic test = new ToeTacTic();
+		test.isFocusable();
 	}
 	private class ButtonHandler implements ActionListener {
         public void actionPerformed (ActionEvent event) {
         	AbstractButton button = (AbstractButton) event.getSource();
         	if (button.getText().equals("X wins!")||button.getText().equals("O wins!")) {
+        		System.out.println("brhiuhuh");
         		reset();
         	}
         	if (button.getText().equals("")) {
@@ -51,13 +53,13 @@ public class ToeTacTic extends JFrame{
         			case 1:
         				getContentPane().removeAll();
         				newbutton = new JButton("X wins!");
-        				button.addActionListener(new ButtonHandler());
+        				newbutton.addActionListener(new ButtonHandler());
         				getContentPane().add(newbutton);
         				break;
         			case -1:
         				getContentPane().removeAll();
         				newbutton = new JButton("O wins!");
-        				button.addActionListener(new ButtonHandler());
+        				newbutton.addActionListener(new ButtonHandler());
         				getContentPane().add(newbutton);
         				break;
         		}
