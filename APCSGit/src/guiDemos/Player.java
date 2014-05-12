@@ -1,16 +1,16 @@
 package guiDemos;
 
 public class Player extends Character{
-	int myClass;
-	int str;
-	int dex;
-	int con;
-	int intel;
-	int wis;
-	int cha;
-	int level;
-	int xp;
-	int turns;
+	private int myClass;
+	private int str;
+	private int dex;
+	private int con;
+	private int intel;
+	private int wis;
+	private int cha;
+	private int level;
+	private int xp;
+	private int turns;
 	
 	Player(String name, int cChoice){
 		myName = name;
@@ -18,8 +18,6 @@ public class Player extends Character{
 		bag = new Inventory();
 		
 	}
-	
-
 
 	public void setMyName(String myName) {
 		this.myName = myName;
@@ -33,10 +31,6 @@ public class Player extends Character{
 	public void setMyClass(int myClass) {
 		this.myClass = myClass;
 	}
-
-
-
-
 
 	public int getStr() {
 		return str;
@@ -98,13 +92,16 @@ public class Player extends Character{
 		return xp;
 	}
 
-	public void setXp(int xp) {
-		this.xp = xp;
+	public void addXp(int xp) {
+		this.xp += xp;
+		if (xp>=(level)*1000){
+			level++;
+			xp=0;
+		}
 	}
 	
 	public String toString(){
 		return (myName + " the level " + level + " " + myClass + " /n" + "HP AC STR DEX CON INT WIS CHA TURNS /n" + hp + " "+ ac + " "+ str + " "+ dex + " "+ con + " "+ intel + " "+ wis + " "+ cha + " "+ turns);
-				
 	}
 	
 	public void move() {
