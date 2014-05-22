@@ -1,4 +1,4 @@
-package guiDemos;
+package src;
 
 public class Monster extends Character{
 	int xp;

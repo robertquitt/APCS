@@ -1,4 +1,4 @@
-package guiDemos;
+package src;
 public class Dungeon {
 	Square[][] dgrid = new Square[100][50];
 	

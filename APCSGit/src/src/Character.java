@@ -1,4 +1,4 @@
-package guiDemos;
+package src;
 
 public class Character {
 	protected String myName;

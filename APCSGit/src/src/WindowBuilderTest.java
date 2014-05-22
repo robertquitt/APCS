@@ -1,4 +1,4 @@
-package guiDemos;
+package src;
 
 import javax.swing.*;
 
