@@ -9,6 +9,7 @@ public class Items {
 		return name;
 	}
 	
+	//change chars to objects in final implementation
 	public char getID() {
 		return id;
 	}
