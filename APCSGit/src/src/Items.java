@@ -12,5 +12,5 @@ public class Items {
 	//change chars to objects in final implementation
 	public char getID() {
 		return id;
-	}
+	}	
 }
