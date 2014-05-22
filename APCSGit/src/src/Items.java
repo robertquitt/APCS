@@ -11,5 +11,5 @@ public class Items {
 	
 	public char getID() {
 		return id;
-	}
+	}	
 }
