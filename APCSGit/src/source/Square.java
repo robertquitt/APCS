@@ -1,4 +1,4 @@
-package src;
+package source;
 
 public class Square {
 	Character occupant;

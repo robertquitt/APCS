@@ -1,4 +1,4 @@
-package src;
+package source;
 /**
  * An enumeration of Equipment slots for Player's held items.
  * @author Robert Q

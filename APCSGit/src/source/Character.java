@@ -1,4 +1,4 @@
-package src;
+package source;
 
 public abstract class Character implements CharDisplayable {
 	protected String myName;

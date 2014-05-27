@@ -1,4 +1,4 @@
-package src;
+package source;
 
 public class Monster extends Character{
 	int xp;
