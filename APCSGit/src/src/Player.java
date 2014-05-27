@@ -1,6 +1,7 @@
 package src;
 
 public class Player extends Character{
+	//Robert Quitt
 	private int myClass;
 	private int str;
 	private int dex;

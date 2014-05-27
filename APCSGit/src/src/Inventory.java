@@ -2,7 +2,7 @@ package src;
 import java.util.ArrayList;
 
 //modified by Brandon, 5-22-14
-public class Inventory {
+public class Inventory implements CharDisplayable{
 	
 	private ArrayList<Items> inv;
 	public static final int INV_MAX = 26;
@@ -12,6 +12,14 @@ public class Inventory {
 	}
 	
 	public void add(Items added){
+		if(added.maxCount!=1){
+			for(Items i:inv){
+				if(i.id==added.id) {
+					i.count+=added.count;
+					return;
+				}
+			}
+		}
 		if (inv.size()==INV_MAX)
 			return;
 		else 
@@ -41,5 +49,10 @@ public class Inventory {
 			s+=  (i+95) + "/t" + inv.get(i).getName() + "/n";
 		}
 		return s;
+	}
+
+	
+	public char getDisplayChar() {
+		return inv.size()==0?' ':inv.get(0).getDisplayChar();
 	}
 }

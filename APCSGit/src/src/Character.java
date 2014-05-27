@@ -1,6 +1,6 @@
 package src;
 
-public class Character {
+public abstract class Character implements CharDisplayable {
 	protected String myName;
 	protected char ID = '@';
 	protected int maxHp;
@@ -30,7 +30,7 @@ public class Character {
 	}
 	
 	public void setMaxHp(int max){
-		this.maxHp=max;
+		this.maxHp = max;
 	}
 	public int getAc() {
 		return ac;
@@ -38,5 +38,8 @@ public class Character {
 
 	public void setAc(int ac) {
 		this.ac = ac;
+	}
+	public char getDisplayChar() {
+		return ID;
 	}
 }

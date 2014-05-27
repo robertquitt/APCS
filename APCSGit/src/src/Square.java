@@ -7,9 +7,7 @@ public class Square {
 	
 	//modified by Brandon, 5-22-14
 	Square(){
-		occupant = null;
-		occFeature = null;
-		inv = new Inventory();
+		this(null,null);
 	}
 	
 	Square(Character occ, Object feature){
@@ -19,21 +17,16 @@ public class Square {
 	}
 	
 	//change chars to objects in final implementation
-	Object getTopLayer() { //change to char
+	char getDisplayChar() { //change to char
 		if (occupant!=null)
-			return occupant; //create this
+			return occupant.getDisplayChar(); //create this
 		else if (inv!=null) {
-			return inv.get(0).getID();
+			return inv.getDisplayChar();
 		}
 		else if (occFeature!=null){
-			return occFeature;
+			return occFeature.toString().charAt(0);//remove later
 		}
 		else return ' ';
 //		else return null;
-	}
-	
-	Character getChar(){
-		return occupant;
-	}
-	
+	}	
 }

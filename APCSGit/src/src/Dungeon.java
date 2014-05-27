@@ -7,16 +7,6 @@ public class Dungeon {
 	
 	public static final int ROWS = 100, COLS = 50;
 	
-	public String printlvl() {
-		String s = "";
-		for (int x=0; x<100;x++) {
-			for (int y=0;y<50;y++) {
-				s+= dgrid[x][y].getChar();
-			}
-		}
-		return s;
-	}
-	
 	//modified by Brandon, 5-22-14
 	public Dungeon(){
 		dgrid = new Square[ROWS][COLS];
@@ -27,6 +17,17 @@ public class Dungeon {
 			}
 		}
 	}
+
+	public String printlvl() {
+		String s = "";
+		for (int x=0; x<ROWS;x++) {
+			for (int y=0;y<COLS;y++) {
+				s+= dgrid[x][y].getChar();
+			}
+		}
+		return s;
+	}
+	
 	
 	public boolean isValid(Location l){
 		return (0<= l.getRow() && l.getRow() < dgrid.length) && (0<= l.getCol() && l.getCol() < dgrid[0].length);
