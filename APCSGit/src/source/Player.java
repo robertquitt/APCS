@@ -12,12 +12,12 @@ public class Player extends Character{
 	private int level;
 	private int xp;
 	private int turns;
-	
+
 	Player(String name, int cChoice){
 		myName = name;
 		myClass = cChoice;
 		bag = new Inventory();
-		
+
 	}
 
 	public void setMyName(String myName) {
@@ -27,7 +27,7 @@ public class Player extends Character{
 	public int getMyClass() {
 		return myClass;
 	}
-	
+
 
 	public void setMyClass(int myClass) {
 		this.myClass = myClass;
@@ -100,15 +100,15 @@ public class Player extends Character{
 			xp=0;
 		}
 	}
-	
+
 	public String toString(){
 		return (myName + " the level " + level + " " + myClass + " /n" + "HP AC STR DEX CON INT WIS CHA TURNS /n" + hp + " "+ ac + " "+ str + " "+ dex + " "+ con + " "+ intel + " "+ wis + " "+ cha + " "+ turns);
 	}
-	
+
 	public void move() {
-		
+
 	}
-	
+
 	public void drop(int selection) {
 		bag.remove(selection);
 	}
