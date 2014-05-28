@@ -3,11 +3,9 @@ package source;
 import java.util.ArrayList;
 
 public class Dungeon {
-	Square[][] dgrid;
-	
+	private Square[][] dgrid;
 	public static final int ROWS = 100, COLS = 50;
 	
-	//modified by Brandon, 5-22-14
 	public Dungeon(){
 		dgrid = new Square[ROWS][COLS];
 		
@@ -37,6 +35,10 @@ public class Dungeon {
 		return dgrid[l.getRow()][l.getCol()];
 	}
 	
+	public void putCharacter(Character occupant,Location loc) {
+		dgrid[loc.getRow()][loc.getCol()].
+	}
+	public void putFeature()
 	public ArrayList<Location> getAdjacentLocations(Location l){
 		ArrayList<Location> list = new ArrayList<Location>();
 		for (int r = l.getRow()-1; r <= l.getRow()+1; r++){

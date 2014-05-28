@@ -1,11 +1,10 @@
 package source;
 
 public class Square {
-	Character occupant;
-	Object occFeature;
-	Inventory inv;
+	private Character occupant;
+	private Object occFeature;
+	private Inventory inv;
 	
-	//modified by Brandon, 5-22-14
 	Square(){
 		this(null,null);
 	}
@@ -28,5 +27,26 @@ public class Square {
 		}
 		else return ' ';
 //		else return null;
-	}	
+	}
+
+	public Character getOccupant() {
+		return occupant;
+	}
+
+	public void setOccupant(Character occupant) {
+		this.occupant = occupant;
+	}
+
+	public Object getOccFeature() {
+		return occFeature;
+	}
+
+	public void setOccFeature(Object occFeature) {
+		this.occFeature = occFeature;
+	}
+
+	public Inventory getInv() {
+		return inv;
+	}
+	
 }

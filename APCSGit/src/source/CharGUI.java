@@ -15,7 +15,7 @@ public class CharGUI {
 		dungeon = new Dungeon();
 	}
 	public void run(){
-		dungeon.
+		dungeon.se
 		String input;
 		do {
 			input = scanner.nextLine();
