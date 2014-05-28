@@ -30,15 +30,18 @@ public class Dungeon {
 	public boolean isValid(Location l){
 		return (0<= l.getRow() && l.getRow() < dgrid.length) && (0<= l.getCol() && l.getCol() < dgrid[0].length);
 	}
-	
-	public Square getSquare(Location l){
-		return dgrid[l.getRow()][l.getCol()];
+	public Character getCharacter(Location l){
+		return dgrid[l.getRow()][l.getCol()].getOccupant();
 	}
-	
+	public MapFeature getFeature(Location loc){
+		return dgrid[loc.getRow()][loc.getCol()].getOccFeature();
+	}
 	public void putCharacter(Character occupant,Location loc) {
-		dgrid[loc.getRow()][loc.getCol()].
+		dgrid[loc.getRow()][loc.getCol()].setOccupant(occupant);
 	}
-	public void putFeature()
+	public void putFeature(MapFeature feature,Location loc) {
+		dgrid[loc.getRow()][loc.getCol()].setOccFeature(feature);
+	}
 	public ArrayList<Location> getAdjacentLocations(Location l){
 		ArrayList<Location> list = new ArrayList<Location>();
 		for (int r = l.getRow()-1; r <= l.getRow()+1; r++){
