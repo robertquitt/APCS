@@ -22,7 +22,7 @@ public class Dungeon {
 		String s = "";
 		for (int x=0; x<ROWS;x++) {
 			for (int y=0;y<COLS;y++) {
-				s+= dgrid[x][y].getChar();
+				s+= dgrid[x][y].getDisplayChar();
 			}
 		}
 		return s;
