@@ -17,7 +17,6 @@ public class Player extends Character{
 		myName = name;
 		myClass = cChoice;
 		bag = new Inventory();
-
 	}
 
 	public void setMyName(String myName) {
@@ -105,8 +104,11 @@ public class Player extends Character{
 		return (myName + " the level " + level + " " + myClass + " /n" + "HP AC STR DEX CON INT WIS CHA TURNS /n" + hp + " "+ ac + " "+ str + " "+ dex + " "+ con + " "+ intel + " "+ wis + " "+ cha + " "+ turns);
 	}
 
-	public void move() {
-
+	public Dungeon getGrid(){
+		return dungeon;
+	}
+	public void move(int dir) {
+		moveTo(loc.getAdjacentLocation(dir));
 	}
 
 	public void drop(int selection) {

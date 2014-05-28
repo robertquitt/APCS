@@ -15,11 +15,28 @@ public class CharGUI {
 		dungeon = new Dungeon();
 	}
 	public void run(){
-		dungeon.se
+		Player player = new Player("dingus", Integer.MAX_VALUE);
+		player.putSelfInDungeon(dungeon, new Location(20,20));
 		String input;
 		do {
-			input = scanner.nextLine();
 			print();
+			input = scanner.nextLine();
+			switch(input.length()==0?' ':input.charAt(0)) {
+			case 'n':
+				player.move(Location.NORTH);
+				break;
+			case 'w':
+				player.move(Location.WEST);
+				break;
+			case 's':
+				player.move(Location.SOUTH);
+				break;
+			case 'e':
+				player.move(Location.EAST);
+				break;
+			default:
+				break;
+			}
 		} while(true);
 	}
 	public void print() {

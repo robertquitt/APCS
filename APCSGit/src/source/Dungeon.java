@@ -37,10 +37,10 @@ public class Dungeon implements Iterable<Square>{
 	public MapFeature getFeature(Location loc){
 		return dgrid[loc.getRow()][loc.getCol()].getOccFeature();
 	}
-	public void putCharacter(Character occupant,Location loc) {
+	public void setCharacter(Character occupant,Location loc) {
 		dgrid[loc.getRow()][loc.getCol()].setOccupant(occupant);
 	}
-	public void putFeature(MapFeature feature,Location loc) {
+	public void setFeature(MapFeature feature,Location loc) {
 		dgrid[loc.getRow()][loc.getCol()].setOccFeature(feature);
 	}
 	public ArrayList<Location> getAdjacentLocations(Location l){
@@ -60,23 +60,27 @@ public class Dungeon implements Iterable<Square>{
 		private int row,col;
 		public DungeonIterator() {
 			row = 0;
-			col = 0;
+			col = -1;
 		}
 		@Override
 		public boolean hasNext() {
-			return false;
+			return row < ROWS || col < COLS;
 		}
 
 		@Override
 		public Square next() {
-			// TODO Auto-generated method stub
-			return null;
+			col++;
+			if (col==Dungeon.COLS){
+				col = 0;
+				row++;
+			}
+			return dgrid[row][col];
 		}
 
 		@Override
 		public void remove() {
-			// TODO Auto-generated method stub
-			
+			dgrid[row][col].setOccupant(null);
+			dgrid[row][col].setOccFeature(null);
 		}	
 	}
 	@Override
