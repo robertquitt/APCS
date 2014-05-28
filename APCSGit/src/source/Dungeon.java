@@ -1,8 +1,9 @@
 package source;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class Dungeon {
+public class Dungeon implements Iterable<Square>{
 	private Square[][] dgrid;
 	public static final int ROWS = 100, COLS = 50;
 	
@@ -53,5 +54,33 @@ public class Dungeon {
 		}
 		list.remove(l);
 		return list;
+	}
+
+	private class DungeonIterator implements Iterator<Square> {
+		private int row,col;
+		public DungeonIterator() {
+			row = 0;
+			col = 0;
+		}
+		@Override
+		public boolean hasNext() {
+			return false;
+		}
+
+		@Override
+		public Square next() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public void remove() {
+			// TODO Auto-generated method stub
+			
+		}	
+	}
+	@Override
+	public Iterator<Square> iterator() {
+		return new DungeonIterator();
 	}
 }

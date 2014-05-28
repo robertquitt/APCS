@@ -2,14 +2,14 @@ package source;
 
 public class Square {
 	private Character occupant;
-	private MapFeature occFeature;
+	private Object occFeature;
 	private Inventory inv;
 	
 	Square(){
 		this(null,null);
 	}
 	
-	Square(Character occ, MapFeature feature){
+	Square(Character occ, Object feature){
 		occupant = occ;
 		occFeature = feature;
 		inv= new Inventory();
