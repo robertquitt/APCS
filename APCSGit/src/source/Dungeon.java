@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 public class Dungeon implements Iterable<Square>{
 	private Square[][] dgrid;
-	public static final int ROWS = 100, COLS = 50;
+	public static final int ROWS = 30, COLS = 80;
 	
 	public Dungeon(){
 		dgrid = new Square[ROWS][COLS];
@@ -23,6 +23,7 @@ public class Dungeon implements Iterable<Square>{
 			for (int y=0;y<COLS;y++) {
 				s+= dgrid[x][y].getDisplayChar();
 			}
+			s+="\n";
 		}
 		return s;
 	}
