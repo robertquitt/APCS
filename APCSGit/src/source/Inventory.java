@@ -1,8 +1,16 @@
 package source;
 import java.util.ArrayList;
 
+
 //modified by Brandon, 5-22-14
+/*
+ Store separate instance variables for each type of armor 
+ When equipping item, set Item from ArrayList to instance variable and remove from ArrayList
+ 
+ */
 public class Inventory implements CharDisplayable{
+	
+	private ItemEquipable HELMET, ARMOR, LEGGINGS, PRIM, SEC;
 	
 	private ArrayList<Items> inv;
 	public static final int INV_MAX = 26;
@@ -30,6 +38,10 @@ public class Inventory implements CharDisplayable{
 		inv.remove(rem);
 	}
 	
+	public void remove (Items target){
+		inv.remove(target);
+	}
+	
 	public boolean isEmpty(){
 		if (inv.isEmpty()){
 			return true;
@@ -55,4 +67,89 @@ public class Inventory implements CharDisplayable{
 	public char getDisplayChar() {
 		return inv.size()==0?' ':inv.get(0).getDisplayChar();
 	}
+	
+	public void equipItem(ItemEquipable item)
+	{
+		inv.remove(item);
+		switch (item.getType()){
+		case HEAD:
+		{
+			if (HELMET!=null)
+			{
+				inv.add(HELMET);
+			}
+			HELMET=item;
+		}
+		case CHEST:
+		{
+			if (ARMOR!=null)
+			{
+				inv.add(ARMOR);
+			}
+			ARMOR=item;
+		}
+		case LEGS:
+		{
+			if (LEGGINGS!=null)
+			{
+				inv.add(LEGGINGS);
+			}
+			LEGGINGS=item;
+		}
+		case PRIMARY:
+		{
+			if (PRIM!=null)
+			{
+				inv.add(PRIM);
+			}
+			PRIM=item;
+			if (item instanceof ItemEquipable.twoHandWeapon)
+			{
+				inv.add(SEC);
+				SEC=null;
+			}
+		}
+		case SECONDARY:
+		{
+			if (SEC!=null)
+			{
+				inv.add(SEC);
+			}
+			if (PRIM!=null&&PRIM instanceof ItemEquipable.twoHandWeapon)
+			{
+				inv.add(PRIM);
+				PRIM=null;
+			}
+			SEC=item;
+			
+		}
+		}
+	}
+		
+	
+	public void unequipItem(ItemEquipable item){
+		inv.add(item);
+		switch (item.getType()){
+		case HEAD:
+		{
+			HELMET=null;
+		}
+		case CHEST:
+		{
+			ARMOR=null;
+		}
+		case LEGS:
+		{
+			LEGGINGS=null;
+		}
+		case PRIMARY:
+		{
+			PRIM=null;
+		}
+		case SECONDARY:
+		{
+			SEC=null;
+		}
+	}
+}
 }
