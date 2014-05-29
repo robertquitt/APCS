@@ -12,20 +12,18 @@ public class Square {
 	Square(Character occ, MapFeature feature){
 		occupant = occ;
 		occFeature = feature;
-		inv= new Inventory();
+		inv = new Inventory();
 	}
 	
 	//change chars to objects in final implementation
 	char getDisplayChar() { //change to char
-		if (occupant!=null)
+		if (occupant!=null) {
 			return occupant.getDisplayChar(); //create this
-		else if (inv!=null) {
+		}else if (occFeature!=null){
+			return occFeature.toString().charAt(0);//remove later
+		}else{ 
 			return inv.getDisplayChar();
 		}
-		else if (occFeature!=null){
-			return occFeature.toString().charAt(0);//remove later
-		}
-		else return ' ';
 //		else return null;
 	}
 

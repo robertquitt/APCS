@@ -119,7 +119,7 @@ public class Player extends Character{
 	}
 
 	public void parse(String input) {
-		switch(input.length()==0?' ':input.charAt(0)) {
+		switch((input+" ").charAt(0)) {
 		case 'w':
 			move(Location.NORTH);
 			break;
@@ -133,6 +133,7 @@ public class Player extends Character{
 			move(Location.EAST);
 			break;
 		default:
+			System.out.println("didnt move");
 			break;
 		}
 	}
