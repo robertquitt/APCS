@@ -108,10 +108,32 @@ public class Player extends Character{
 		return dungeon;
 	}
 	public void move(int dir) {
-		moveTo(loc.getAdjacentLocation(dir));
+		Location toLoc = loc.getAdjacentLocation(dir);
+		if (dungeon.isValid(toLoc)){
+			moveTo(loc);
+		}
 	}
 
 	public void drop(int selection) {
 		bag.remove(selection);
+	}
+
+	public void parse(String input) {
+		switch(input.length()==0?' ':input.charAt(0)) {
+		case 'w':
+			move(Location.NORTH);
+			break;
+		case 'a':
+			move(Location.WEST);
+			break;
+		case 's':
+			move(Location.SOUTH);
+			break;
+		case 'd':
+			move(Location.EAST);
+			break;
+		default:
+			break;
+		}
 	}
 }

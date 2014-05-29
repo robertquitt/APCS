@@ -19,28 +19,10 @@ public class CharGUI {
 		player.putSelfInDungeon(dungeon, new Location(20,20));
 		String input;
 		do {
-			print();
+			System.out.println(dungeon.printlvl());
 			input = scanner.nextLine();
-			switch(input.length()==0?' ':input.charAt(0)) {
-			case 'n':
-				player.move(Location.NORTH);
-				break;
-			case 'w':
-				player.move(Location.WEST);
-				break;
-			case 's':
-				player.move(Location.SOUTH);
-				break;
-			case 'e':
-				player.move(Location.EAST);
-				break;
-			default:
-				break;
-			}
+			player.parse(input);
 		} while(true);
-	}
-	public void print() {
-		System.out.println(dungeon.printlvl());
 	}
 	public static void main(String[] args) {
 		CharGUI gui = new CharGUI();
