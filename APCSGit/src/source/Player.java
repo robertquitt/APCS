@@ -107,13 +107,27 @@ public class Player extends Character{
 	public Dungeon getGrid(){
 		return dungeon;
 	}
+	
 	public void move(int dir) {
 		Location toLoc = loc.getAdjacentLocation(dir);
 		if (dungeon.isValid(toLoc)){
-			moveTo(loc);
+			if (dungeon.getCharacter(toLoc) instanceof Monster){
+				attack(dungeon.getCharacter(toLoc));
+			} else if (dungeon.getFeature(toLoc)!=null&&dungeon.getFeature(toLoc).isTraversable()){
+				moveTo(toLoc);
+			}
 		}
 	}
 
+	public boolean attack(Character foe) {
+		int attack = (dex-10)/2;
+		if (attack-ac>=0) {
+			//foe.setHp(Math.random()*WEAPON)+(str-10)/2);
+			return true;
+		}
+		else 
+			return false;
+	}
 	public void drop(int selection) {
 		bag.remove(selection);
 	}
@@ -131,6 +145,9 @@ public class Player extends Character{
 			break;
 		case 'd':
 			move(Location.EAST);
+			break;
+		case 'r':
+			dungeon.addItem(bag.remove(0), loc);
 			break;
 		default:
 			System.out.println("didnt move");
