@@ -19,6 +19,20 @@ public class Inventory implements CharDisplayable{
 		inv = new ArrayList<Items>();
 	}
 	
+	public ItemEquipable getHelmet(){
+		return HELMET;
+	}
+	
+	public ItemEquipable getArmor(){
+		return ARMOR;
+	}
+	
+	public ItemEquipable getPrimary(){
+		return PRIM;
+	}
+	public ItemEquipable getSecondary(){
+		return SEC;
+	}
 	public void add(Items added){
 		if(added.maxCount!=1){
 			for(Items i:inv){

@@ -8,9 +8,7 @@ public class Monster extends Character{
 	Inventory stuff;
 	boolean detectChar;
 	
-	public void attack(){
-		
-	}
+
 	public void move(){
 		
 	}
