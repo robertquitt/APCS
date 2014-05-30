@@ -117,9 +117,15 @@ public class Player extends Character{
 			}
 		}
 	}
-
-	private void attack(Character character) {
-		// TODO Auto-generated method stub
+	
+	public boolean attack(Character foe) {
+		int attack = (dex-10)/2;
+		if (attack-ac>=0) {
+			//foe.setHp(Math.random()*WEAPON)+(str-10)/2);
+			return true;
+		}
+		else 
+			return false;
 	}
 
 	public void drop(int selection) {
