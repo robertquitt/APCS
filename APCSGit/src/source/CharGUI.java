@@ -1,6 +1,7 @@
 package source;
 
 import java.util.Scanner;
+import chn.util.*;
 
 /**
  * Text-based GUI for debugging purposes
@@ -10,13 +11,19 @@ import java.util.Scanner;
 public class CharGUI {
 	Dungeon dungeon;
 	Scanner scanner;
+//	ConsoleIO scanner;
 	public CharGUI() {
-		scanner = new Scanner(System.in);
+//		scanner = new ConsoleIO();
+		scanner = new Scanner (System.in);
 		dungeon = new Dungeon();
 	}
 	public void run(){
 		Player player = new Player("dingus", Integer.MAX_VALUE);
 		player.putSelfInDungeon(dungeon, new Location(20,20));
+		Items dat = new Items("Potato");
+		dungeon.addItem(dat, new Location(20, 23));
+		
+		//makes walls
 		for (int i = 0; i < Dungeon.ROWS; i++) {
 			dungeon.setFeature(new Wall(), new Location(i,0));
 			dungeon.setFeature(new Wall(), new Location(i,Dungeon.COLS-1));

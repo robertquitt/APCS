@@ -88,4 +88,17 @@ public class Dungeon implements Iterable<Square>{
 	public Iterator<Square> iterator() {
 		return new DungeonIterator();
 	}
+	
+	public void addItem(Items i, Location l){
+		dgrid[l.getRow()][l.getCol()].addItem(i);
+	}
+	
+	public Items takeItem(Location l){
+		try{
+			return dgrid[l.getRow()][l.getCol()].getInv().remove(0);
+		}
+		catch (Exception e){
+			return null;
+		}
+	}
 }

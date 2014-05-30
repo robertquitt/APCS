@@ -34,8 +34,8 @@ public class Inventory implements CharDisplayable{
 			inv.add(added);
 	}
 	
-	public void remove(int rem) {
-		inv.remove(rem);
+	public Items remove(int rem) {
+		return inv.remove(rem);
 	}
 	
 	public void remove (Items target){

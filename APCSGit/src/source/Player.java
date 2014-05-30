@@ -110,12 +110,16 @@ public class Player extends Character{
 	public void move(int dir) {
 		Location toLoc = loc.getAdjacentLocation(dir);
 		if (dungeon.isValid(toLoc)){
-			moveTo(loc);
+			moveTo(toLoc);
+			Items i = dungeon.takeItem(loc);
+			if (i != null){
+				bag.add(i);
+			}
 		}
 	}
 
 	public void drop(int selection) {
-		bag.remove(selection);
+		dungeon.addItem(bag.remove(selection), loc);
 	}
 
 	public void parse(String input) {
@@ -131,6 +135,9 @@ public class Player extends Character{
 			break;
 		case 'd':
 			move(Location.EAST);
+			break;
+		case 'r':
+			drop(0);
 			break;
 		default:
 			System.out.println("didnt move");

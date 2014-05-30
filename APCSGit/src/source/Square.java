@@ -5,11 +5,11 @@ public class Square {
 	private MapFeature occFeature;
 	private Inventory inv;
 	
-	Square(){
+	public Square(){
 		this(null,null);
 	}
 	
-	Square(Character occ, MapFeature feature){
+	public Square(Character occ, MapFeature feature){
 		occupant = occ;
 		occFeature = feature;
 		inv = new Inventory();
@@ -47,4 +47,7 @@ public class Square {
 		return inv;
 	}
 	
+	public void addItem(Items i){
+		inv.add(i);
+	}
 }

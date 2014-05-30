@@ -4,7 +4,7 @@ public class Items implements CharDisplayable{
 	boolean identified = false;
 	int count;
 	final int maxCount;
-	char disp; //char to be displayed when on ground
+	char disp = 'i'; //char to be displayed when on ground
 	final int id; //unique for each type of item
 	final String name; //name of item
 	
