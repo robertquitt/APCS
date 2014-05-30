@@ -6,10 +6,9 @@ import java.util.Iterator;
 public class Dungeon implements Iterable<Square>{
 	private Square[][] dgrid;
 	public static final int ROWS = 30, COLS = 80;
-	
+	private Player player;
 	public Dungeon(){
 		dgrid = new Square[ROWS][COLS];
-		
 		for (int r = 0; r < dgrid.length; r++){
 			for (int c = 0; c < dgrid[0].length; c++){
 				dgrid[r][c] = new Square();
@@ -28,7 +27,9 @@ public class Dungeon implements Iterable<Square>{
 		return s;
 	}
 	
-	
+	public Player getPlayer() {
+		return player;
+	}
 	public boolean isValid(Location l){
 		return (0<= l.getRow() && l.getRow() < dgrid.length) && (0<= l.getCol() && l.getCol() < dgrid[0].length);
 	}
