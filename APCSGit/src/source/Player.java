@@ -110,8 +110,16 @@ public class Player extends Character{
 	public void move(int dir) {
 		Location toLoc = loc.getAdjacentLocation(dir);
 		if (dungeon.isValid(toLoc)){
-			moveTo(loc);
+			if (dungeon.getCharacter(toLoc) instanceof Monster){
+				attack(dungeon.getCharacter(toLoc));
+			} else if (dungeon.getFeature(toLoc)!=null||dungeon.getFeature(toLoc).isTraversable()){
+				moveTo(toLoc);
+			}
 		}
+	}
+
+	private void attack(Character character) {
+		// TODO Auto-generated method stub
 	}
 
 	public void drop(int selection) {
