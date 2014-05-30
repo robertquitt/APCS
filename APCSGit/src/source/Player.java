@@ -113,8 +113,9 @@ public class Player extends Character{
 		if (dungeon.isValid(toLoc)){
 			if (dungeon.getCharacter(toLoc) instanceof Monster){
 				attack(dungeon.getCharacter(toLoc));
-			} else if (dungeon.getFeature(toLoc)!=null&&dungeon.getFeature(toLoc).isTraversable()){
+			} else if (dungeon.isTraversable(toLoc)){
 				moveTo(toLoc);
+				takeItems(toLoc);
 			}
 		}
 	}
@@ -153,6 +154,13 @@ public class Player extends Character{
 		default:
 			System.out.println("didnt move");
 			break;
+		}
+	}
+	
+	public void takeItems(Location l){
+		Inventory i = dungeon.getSquare(l).getInv();
+		while (!i.isEmpty() && !bag.isFull()){
+			bag.add(i.remove(0));
 		}
 	}
 }

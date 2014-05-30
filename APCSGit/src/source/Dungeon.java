@@ -34,7 +34,7 @@ public class Dungeon implements Iterable<Square>{
 		return (0<= l.getRow() && l.getRow() < dgrid.length) && (0<= l.getCol() && l.getCol() < dgrid[0].length);
 	}
 	public Character getCharacter(Location l){
-		return dgrid[l.getRow()][l.getCol()].getOccupant();
+		return this.getSquare(l).getOccupant();
 	}
 	public MapFeature getFeature(Location loc){
 		return dgrid[loc.getRow()][loc.getCol()].getOccFeature();
@@ -91,15 +91,27 @@ public class Dungeon implements Iterable<Square>{
 	}
 	
 	public void addItem(Items i, Location l){
-		dgrid[l.getRow()][l.getCol()].addItem(i);
+		this.getSquare(l).addItem(i);
 	}
 	
 	public Items takeItem(Location l){
 		try{
-			return dgrid[l.getRow()][l.getCol()].getInv().remove(0);
+			return getSquare(l).getInv().remove(0);
 		}
 		catch (Exception e){
 			return null;
 		}
+	}
+	
+	public Square getSquare(Location l){
+		return dgrid[l.getRow()][l.getCol()];
+	}
+	
+	public boolean isTraversable(Location l){
+		Square s = this.getSquare(l);
+		if (s.getOccFeature() == null){
+			return true;
+		}
+		return s.getOccFeature().isTraversable();
 	}
 }

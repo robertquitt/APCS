@@ -22,6 +22,9 @@ public class CharGUI {
 		player.putSelfInDungeon(dungeon, new Location(20,20));
 		Items dat = new Items("Potato");
 		dungeon.addItem(dat, new Location(20, 23));
+		dungeon.addItem(dat, new Location(20, 23));
+		dungeon.addItem(dat, new Location(20, 23));
+		dungeon.addItem(dat, new Location(20, 23));
 		
 		//makes walls
 		for (int i = 0; i < Dungeon.ROWS; i++) {

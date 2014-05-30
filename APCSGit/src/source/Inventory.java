@@ -34,6 +34,8 @@ public class Inventory implements CharDisplayable{
 		return SEC;
 	}
 	public void add(Items added){
+//		NEED TO FIX THIS
+//		BUGGY (multiples by 2 instead of adding count)
 		if(added.maxCount!=1){
 			for(Items i:inv){
 				if(i.id==added.id) {
@@ -58,6 +60,15 @@ public class Inventory implements CharDisplayable{
 	
 	public boolean isEmpty(){
 		if (inv.isEmpty()){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public boolean isFull(){
+		if (inv.size() == INV_MAX){
 			return true;
 		}
 		else{
