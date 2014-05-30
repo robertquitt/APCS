@@ -129,6 +129,7 @@ public class Player extends Character{
 			return false;
 	}
 	public void drop(int selection) {
+		dungeon.addItem(bag.remove(selection), loc);
 		bag.remove(selection);
 	}
 
@@ -147,8 +148,8 @@ public class Player extends Character{
 			move(Location.EAST);
 			break;
 		case 'r':
-			dungeon.addItem(bag.remove(0), loc);
-			break;
+			 drop(0);
+			 break;
 		default:
 			System.out.println("didnt move");
 			break;
