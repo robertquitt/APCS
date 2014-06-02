@@ -1,5 +1,6 @@
 package source;
 
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -28,7 +29,6 @@ public class GUI extends JFrame implements KeyListener{
 		g.setColor(Color.black);
 		for (int r = 0; r<dungeon.ROWS; r++) {
 			for (int c = 0; c<dungeon.COLS; c++) {
-				g.drawImage(il.getImage(dungeon.getSquare(r, c)),32*c+32, 32*r+32, this);
 				g.drawImage(il.getImage(dungeon.getSquare(r, c).getDisplayedObject()), 32*c+32, 32*r+32, this);
 			}
 		}

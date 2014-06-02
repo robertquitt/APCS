@@ -1,5 +1,6 @@
 package source;
 
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -58,6 +59,9 @@ public class Dungeon implements Iterable<Square>{
 	}
 	public MapFeature getFeature(Location loc){
 		return dgrid[loc.getRow()][loc.getCol()].getOccFeature();
+	}
+	public Items pickupItem(Location loc) {
+		return dgrid[loc.getRow()][loc.getCol()].getInv().remove(0);
 	}
 	public void setCharacter(Character occupant,Location loc) {
 		dgrid[loc.getRow()][loc.getCol()].setOccupant(occupant);

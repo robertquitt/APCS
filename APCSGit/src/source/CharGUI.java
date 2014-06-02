@@ -1,5 +1,6 @@
 package source;
 
+
 import java.util.Scanner;
 
 /**
@@ -47,7 +48,7 @@ public class CharGUI {
 					System.exit(0);
 					break;
 				case "changes":
-					switch((int)Math.random()*3) {
+					switch((int)(Math.random()*3)) {
 					case 0:
 						System.err.println("Non-fast forward.");
 						break;

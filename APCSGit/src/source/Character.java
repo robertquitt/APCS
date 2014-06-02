@@ -1,6 +1,7 @@
 package source;
 
 
+
 public abstract class Character {
 	protected Dungeon dungeon;
 	protected String myName;

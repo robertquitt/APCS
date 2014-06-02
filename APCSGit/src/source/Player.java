@@ -1,6 +1,7 @@
 package source;
 
 
+
 public class Player extends Character{
 	//Robert Quitt
 	private int myClass;

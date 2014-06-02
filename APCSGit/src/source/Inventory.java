@@ -1,4 +1,5 @@
 package source;
+
 import java.util.ArrayList;
 
 
@@ -34,12 +35,12 @@ public class Inventory {
 			inv.add(added);
 	}
 	
-	public void remove(int rem) {
-		inv.remove(rem);
+	public Items remove(int rem) {
+		return inv.remove(rem);
 	}
 	
-	public void remove (Items target){
-		inv.remove(target);
+	public boolean remove (Items target){
+		return inv.remove(target);
 	}
 	
 	public boolean isEmpty(){

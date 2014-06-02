@@ -1,6 +1,7 @@
 package source;
 
 
+
 public class Square {
 	private Character occupant;
 	private MapFeature occFeature;

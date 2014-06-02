@@ -1,5 +1,6 @@
 package source;
 
+
 import java.awt.Image;
 
 public class Monster extends Character{
