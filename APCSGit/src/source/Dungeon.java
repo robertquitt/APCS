@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 public class Dungeon implements Iterable<Square>{
 	private Square[][] dgrid;
-	public static final int ROWS = 30, COLS = 80;
+	public static final int ROWS = 10, COLS = 10;
 	private Player player;
 	public Dungeon(){
 		dgrid = new Square[ROWS][COLS];
@@ -14,6 +14,19 @@ public class Dungeon implements Iterable<Square>{
 				dgrid[r][c] = new Square();
 			}
 		}
+		construct();
+	}
+	private void construct() {
+		for(int r = 0; r<ROWS; r++) {
+			dgrid[r][0].setOccFeature(new Wall());
+			dgrid[r][COLS-1].setOccFeature(new Wall());
+		}
+		for(int c = 0; c<COLS; c++) {
+			dgrid[0][c].setOccFeature(new Wall());
+			dgrid[ROWS-1][c].setOccFeature(new Wall());
+		}
+		player = new Player("Dingus", 0);
+		player.putSelfInDungeon(this, new Location((int)(Math.random()*(ROWS-2))+1,(int)(Math.random()*(COLS-2))+1));
 	}
 
 	public String printlvl() {
@@ -26,6 +39,13 @@ public class Dungeon implements Iterable<Square>{
 		}
 		return s;
 	}
+	public String printline(int row) {
+		String s = "";
+		for (int col = 0; col < COLS; col++) {
+			s+=dgrid[row][col].getDisplayChar();
+		}
+		return s;
+	}
 	
 	public Player getPlayer() {
 		return player;
@@ -34,7 +54,7 @@ public class Dungeon implements Iterable<Square>{
 		return (0<= l.getRow() && l.getRow() < dgrid.length) && (0<= l.getCol() && l.getCol() < dgrid[0].length);
 	}
 	public Character getCharacter(Location l){
-		return this.getSquare(l).getOccupant();
+		return dgrid[l.getRow()][l.getCol()].getOccupant();
 	}
 	public MapFeature getFeature(Location loc){
 		return dgrid[loc.getRow()][loc.getCol()].getOccFeature();
@@ -56,6 +76,9 @@ public class Dungeon implements Iterable<Square>{
 		}
 		list.remove(l);
 		return list;
+	}
+	public Square getSquare(int x, int y) {
+		return dgrid[x][y];
 	}
 
 	private class DungeonIterator implements Iterator<Square> {
@@ -88,30 +111,5 @@ public class Dungeon implements Iterable<Square>{
 	@Override
 	public Iterator<Square> iterator() {
 		return new DungeonIterator();
-	}
-	
-	public void addItem(Items i, Location l){
-		this.getSquare(l).addItem(i);
-	}
-	
-	public Items takeItem(Location l){
-		try{
-			return getSquare(l).getInv().remove(0);
-		}
-		catch (Exception e){
-			return null;
-		}
-	}
-	
-	public Square getSquare(Location l){
-		return dgrid[l.getRow()][l.getCol()];
-	}
-	
-	public boolean isTraversable(Location l){
-		Square s = this.getSquare(l);
-		if (s.getOccFeature() == null){
-			return true;
-		}
-		return s.getOccFeature().isTraversable();
 	}
 }

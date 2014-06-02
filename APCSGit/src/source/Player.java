@@ -1,5 +1,6 @@
 package source;
 
+
 public class Player extends Character{
 	//Robert Quitt
 	private int myClass;
@@ -12,7 +13,7 @@ public class Player extends Character{
 	private int level;
 	private int xp;
 	private int turns;
-
+	
 	Player(String name, int cChoice){
 		myName = name;
 		myClass = cChoice;
@@ -107,19 +108,17 @@ public class Player extends Character{
 	public Dungeon getGrid(){
 		return dungeon;
 	}
-	
 	public void move(int dir) {
 		Location toLoc = loc.getAdjacentLocation(dir);
 		if (dungeon.isValid(toLoc)){
 			if (dungeon.getCharacter(toLoc) instanceof Monster){
 				attack(dungeon.getCharacter(toLoc));
-			} else if (dungeon.isTraversable(toLoc)){
+			} else if (dungeon.getFeature(toLoc)==null || dungeon.getFeature(toLoc).isTraversable()){
 				moveTo(toLoc);
-				takeItems(toLoc);
 			}
 		}
 	}
-
+	
 	public boolean attack(Character foe) {
 		int attack = (dex-10)/2;
 		if (attack-ac>=0) {
@@ -129,38 +128,9 @@ public class Player extends Character{
 		else 
 			return false;
 	}
+
 	public void drop(int selection) {
-		dungeon.addItem(bag.remove(selection), loc);
 		bag.remove(selection);
 	}
-
-	public void parse(String input) {
-		switch((input+" ").charAt(0)) {
-		case 'w':
-			move(Location.NORTH);
-			break;
-		case 'a':
-			move(Location.WEST);
-			break;
-		case 's':
-			move(Location.SOUTH);
-			break;
-		case 'd':
-			move(Location.EAST);
-			break;
-		case 'r':
-			 drop(0);
-			 break;
-		default:
-			System.out.println("didnt move");
-			break;
-		}
-	}
 	
-	public void takeItems(Location l){
-		Inventory i = dungeon.getSquare(l).getInv();
-		while (!i.isEmpty() && !bag.isFull()){
-			bag.add(i.remove(0));
-		}
-	}
 }

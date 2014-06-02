@@ -4,42 +4,59 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class GUI implements KeyListener{
-	private JFrame frame;
+@SuppressWarnings("serial")
+public class GUI extends JFrame implements KeyListener{
 	private Dungeon dungeon;
+	private Player player;
+	private ImageLoader il;
 	public GUI(){
-		frame = new JFrame("Rogue-Like");
-        frame.setLayout(new GridLayout(30,80));
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.addKeyListener(this);
-        frame.setSize(960,2560);
-        frame.setVisible(true);
+		super("Rogue-Like");
+        setLayout(new GridLayout(30,80));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        addKeyListener(this);
+        setSize(400,400);
+        this.setResizable(false);
+        setVisible(true);
         dungeon = new Dungeon();
-        dungeon.getPlayer();
+        player = dungeon.getPlayer();
+        il = new ImageLoader();
+        repaint();
+	}
+	@SuppressWarnings("static-access")
+	public void paint(Graphics g) {
+		super.paint(g);
+		g.setColor(Color.black);
+		for (int r = 0; r<dungeon.ROWS; r++) {
+			for (int c = 0; c<dungeon.COLS; c++) {
+				g.drawImage(il.getImage(dungeon.getSquare(r, c)),32*c+32, 32*r+32, this);
+				g.drawImage(il.getImage(dungeon.getSquare(r, c).getDisplayedObject()), 32*c+32, 32*r+32, this);
+			}
+		}
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
-		System.out.println("Key pressed: " + e.getKeyCode());
+		//System.out.println("Key pressed: " + e.getKeyCode());
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 			System.exit(0);
 		} else {
 			switch(e.getKeyCode()) {
 			case KeyEvent.VK_UP:
-				dungeon.getPlayer().move(Location.NORTH);
+				player.move(Location.NORTH);
 				break;
 			case KeyEvent.VK_LEFT:
-				dungeon.getPlayer().move(Location.WEST);
+				player.move(Location.WEST);
 				break;
 			case KeyEvent.VK_DOWN:
-				dungeon.getPlayer().move(Location.SOUTH);
+				player.move(Location.SOUTH);
 				break;			
 			case KeyEvent.VK_RIGHT:
-				dungeon.getPlayer().move(Location.EAST);
+				player.move(Location.EAST);
 				break;
 			default:
 				break;
 			}
 		}
+		repaint();
 	}
 	@Override
 	public void keyReleased(KeyEvent arg0) {
