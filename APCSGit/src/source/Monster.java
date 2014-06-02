@@ -1,5 +1,7 @@
 package source;
 
+import java.awt.Image;
+
 public class Monster extends Character{
 	int xp;
 	int cr;
@@ -7,8 +9,10 @@ public class Monster extends Character{
 	int damage;
 	Inventory stuff;
 	boolean detectChar;
-	
-
+	public static Image image = null;
+	public void attack(){
+		
+	}
 	public void move(){
 		
 	}
@@ -29,5 +33,9 @@ public class Monster extends Character{
 	}
 	else
 		return false;
-}
+	}
+	
+	public Image getDisplay() {
+		return image;
+	}
 }

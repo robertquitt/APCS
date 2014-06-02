@@ -1,10 +1,10 @@
 package source;
 
-public class Items implements CharDisplayable{
+public class Items {
 	boolean identified = false;
 	int count;
 	final int maxCount;
-	char disp = 'i'; //char to be displayed when on ground
+	char disp; //char to be displayed when on ground
 	final int id; //unique for each type of item
 	final String name; //name of item
 	

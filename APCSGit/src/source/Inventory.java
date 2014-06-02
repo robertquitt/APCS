@@ -8,7 +8,7 @@ import java.util.ArrayList;
  When equipping item, set Item from ArrayList to instance variable and remove from ArrayList
  
  */
-public class Inventory implements CharDisplayable{
+public class Inventory {
 	
 	private ItemEquipable HELMET, ARMOR, LEGGINGS, PRIM, SEC;
 	
@@ -19,23 +19,7 @@ public class Inventory implements CharDisplayable{
 		inv = new ArrayList<Items>();
 	}
 	
-	public ItemEquipable getHelmet(){
-		return HELMET;
-	}
-	
-	public ItemEquipable getArmor(){
-		return ARMOR;
-	}
-	
-	public ItemEquipable getPrimary(){
-		return PRIM;
-	}
-	public ItemEquipable getSecondary(){
-		return SEC;
-	}
 	public void add(Items added){
-//		NEED TO FIX THIS
-//		BUGGY (multiples by 2 instead of adding count)
 		if(added.maxCount!=1){
 			for(Items i:inv){
 				if(i.id==added.id) {
@@ -50,8 +34,8 @@ public class Inventory implements CharDisplayable{
 			inv.add(added);
 	}
 	
-	public Items remove(int rem) {
-		return inv.remove(rem);
+	public void remove(int rem) {
+		inv.remove(rem);
 	}
 	
 	public void remove (Items target){
@@ -60,15 +44,6 @@ public class Inventory implements CharDisplayable{
 	
 	public boolean isEmpty(){
 		if (inv.isEmpty()){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
-	
-	public boolean isFull(){
-		if (inv.size() == INV_MAX){
 			return true;
 		}
 		else{
@@ -91,6 +66,10 @@ public class Inventory implements CharDisplayable{
 	
 	public char getDisplayChar() {
 		return inv.size()==0?' ':inv.get(0).getDisplayChar();
+	}
+	
+	public Object getDisplayedObject() {
+		return inv.size()==0?null:inv.get(0).getDisplayChar();
 	}
 	
 	public void equipItem(ItemEquipable item)
