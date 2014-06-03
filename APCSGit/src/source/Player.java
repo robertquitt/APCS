@@ -1,9 +1,6 @@
 package source;
 
-
-
 public class Player extends Character{
-	//Robert Quitt
 	private int myClass;
 	private int str;
 	private int dex;
@@ -14,7 +11,7 @@ public class Player extends Character{
 	private int level;
 	private int xp;
 	private int turns;
-	
+
 	Player(String name, int cChoice){
 		myName = name;
 		myClass = cChoice;
@@ -114,7 +111,7 @@ public class Player extends Character{
 		if (dungeon.isValid(toLoc)){
 			if (dungeon.getCharacter(toLoc) instanceof Monster){
 				attack(dungeon.getCharacter(toLoc));
-			} else if (dungeon.getFeature(toLoc)==null || dungeon.getFeature(toLoc).isTraversable()){
+			} else if (dungeon.getFeature(toLoc)!=null||dungeon.getFeature(toLoc).isTraversable()){
 				moveTo(toLoc);
 			}
 		}
@@ -123,7 +120,7 @@ public class Player extends Character{
 	public boolean attack(Character foe) {
 		int attack = (dex-10)/2;
 		if (attack-ac>=0) {
-			//foe.setHp(Math.random()*WEAPON)+(str-10)/2);
+			foe.setHp((int)(Math.random()*bag.getPrimary().getAttack())+(str-10)/2);
 			return true;
 		}
 		else 
@@ -133,5 +130,24 @@ public class Player extends Character{
 	public void drop(int selection) {
 		bag.remove(selection);
 	}
-	
+
+	public void parse(String input) {
+		switch((input+" ").charAt(0)) {
+		case 'w':
+			move(Location.NORTH);
+			break;
+		case 'a':
+			move(Location.WEST);
+			break;
+		case 's':
+			move(Location.SOUTH);
+			break;
+		case 'd':
+			move(Location.EAST);
+			break;
+		default:
+			System.out.println("didnt move");
+			break;
+		}
+	}
 }

@@ -56,6 +56,26 @@ public class Inventory {
 		return inv.get(num);
 	}
 	
+	public ItemEquipable getPrimary(){
+		return PRIM;
+	}
+	
+	public ItemEquipable getSecondary(){
+		return SEC;
+	}
+	
+	public ItemEquipable getArmor(){
+		return ARMOR;
+	}
+	
+	public ItemEquipable getHelm(){
+		return HELMET;
+	}
+	
+	public ItemEquipable getLegs(){
+		return LEGGINGS;
+	}
+	
 	public String toString(){
 		String s = "";
 		for (int i=0;i<INV_MAX;i++){

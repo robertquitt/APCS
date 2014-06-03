@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 public class Dungeon implements Iterable<Square>{
 	private Square[][] dgrid;
-	public static final int ROWS = 10, COLS = 10;
+	public static final int ROWS = 50, COLS = 100;
 	private Player player;
 	public Dungeon(){
 		dgrid = new Square[ROWS][COLS];
@@ -18,18 +18,41 @@ public class Dungeon implements Iterable<Square>{
 		construct();
 	}
 	private void construct() {
-		for(int r = 0; r<ROWS; r++) {
+		/*for(int r = 0; r<ROWS; r++) {
 			dgrid[r][0].setOccFeature(new Wall());
 			dgrid[r][COLS-1].setOccFeature(new Wall());
 		}
 		for(int c = 0; c<COLS; c++) {
 			dgrid[0][c].setOccFeature(new Wall());
 			dgrid[ROWS-1][c].setOccFeature(new Wall());
+		}*/
+		int rooms = (int)(Math.random()*5)+4;
+		for (int i=0;i<rooms;i++){
+			generateRoom();
 		}
 		player = new Player("Dingus", 0);
 		player.putSelfInDungeon(this, new Location((int)(Math.random()*(ROWS-2))+1,(int)(Math.random()*(COLS-2))+1));
 	}
-
+	
+	public void generateRoom() {
+		Location center = null;
+		boolean oc = false;
+		while (!oc){
+			center = new Location((int)(Math.random()*47+1),(int)(Math.random()*98+1));
+			if (dgrid[center.getRow()][center.getCol()].equals(null)){
+				oc=true;
+			}
+		}
+		int radius = (int)(Math.random()*6)+2;
+		for (int i=center.getRow()-radius;i<center.getRow()+radius;i++){
+			dgrid[i][center.getCol()-radius].setOccFeature(new Wall());
+			dgrid[i][center.getCol()+radius].setOccFeature(new Wall());
+		}
+		for (int j=center.getCol()-radius;j<center.getCol()+radius;j++){
+			dgrid[center.getRow()-radius][j].setOccFeature(new Wall());
+			dgrid[center.getRow()+radius][j].setOccFeature(new Wall());
+		}
+	}
 	public String printlvl() {
 		String s = "";
 		for (int x=0; x<ROWS;x++) {
