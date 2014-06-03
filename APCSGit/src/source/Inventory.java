@@ -1,4 +1,5 @@
 package source;
+
 import java.util.ArrayList;
 
 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
  When equipping item, set Item from ArrayList to instance variable and remove from ArrayList
  
  */
-public class Inventory implements CharDisplayable{
+public class Inventory {
 	
 	private ItemEquipable HELMET, ARMOR, LEGGINGS, PRIM, SEC;
 	
@@ -34,12 +35,12 @@ public class Inventory implements CharDisplayable{
 			inv.add(added);
 	}
 	
-	public void remove(int rem) {
-		inv.remove(rem);
+	public Items remove(int rem) {
+		return inv.remove(rem);
 	}
 	
-	public void remove (Items target){
-		inv.remove(target);
+	public boolean remove (Items target){
+		return inv.remove(target);
 	}
 	
 	public boolean isEmpty(){
@@ -55,6 +56,26 @@ public class Inventory implements CharDisplayable{
 		return inv.get(num);
 	}
 	
+	public ItemEquipable getPrimary(){
+		return PRIM;
+	}
+	
+	public ItemEquipable getSecondary(){
+		return SEC;
+	}
+	
+	public ItemEquipable getArmor(){
+		return ARMOR;
+	}
+	
+	public ItemEquipable getHelm(){
+		return HELMET;
+	}
+	
+	public ItemEquipable getLegs(){
+		return LEGGINGS;
+	}
+	
 	public String toString(){
 		String s = "";
 		for (int i=0;i<INV_MAX;i++){
@@ -66,6 +87,10 @@ public class Inventory implements CharDisplayable{
 	
 	public char getDisplayChar() {
 		return inv.size()==0?' ':inv.get(0).getDisplayChar();
+	}
+	
+	public Object getDisplayedObject() {
+		return inv.size()==0?null:inv.get(0).getDisplayChar();
 	}
 	
 	public void equipItem(ItemEquipable item)

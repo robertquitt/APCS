@@ -1,5 +1,7 @@
 package source;
 
+
+
 public class Square {
 	private Character occupant;
 	private MapFeature occFeature;
@@ -14,17 +16,15 @@ public class Square {
 		occFeature = feature;
 		inv = new Inventory();
 	}
-	
-	//change chars to objects in final implementation
-	char getDisplayChar() { //change to char
+
+	public Object getDisplayedObject() { //change to char
 		if (occupant!=null) {
-			return occupant.getDisplayChar(); //create this
+			return occupant; //create this
 		}else if (occFeature!=null){
-			return occFeature.toString().charAt(0);//remove later
+			return occFeature;//remove later
 		}else{ 
-			return inv.getDisplayChar();
+			return inv.getDisplayedObject();//this returns null if inv is empty
 		}
-//		else return null;
 	}
 
 	public Character getOccupant() {
@@ -45,6 +45,17 @@ public class Square {
 
 	public Inventory getInv() {
 		return inv;
+	}
+
+	public char getDisplayChar() {
+		if (occupant!=null) {
+			return occupant.getDisplayChar(); //create this
+		}else if (occFeature!=null){
+			return occFeature.getDisplayChar();//remove later
+		}else{ 
+			return '.';
+			//return inv.getDisplayChar();
+		}
 	}
 	
 }

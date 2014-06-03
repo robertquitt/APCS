@@ -1,19 +1,25 @@
 package source;
 
+
+import java.awt.Image;
 import java.io.*;
-import java.net.URL;
+import java.util.HashMap;
+
 import javax.swing.*;
 public class ImageLoader {
-	private ImageIcon wall;
-	private ImageIcon floor;
-	private ImageIcon player;
+	private ClassLoader cldr;
+	@SuppressWarnings("rawtypes")
+	private HashMap<Class,Image> images;
+	@SuppressWarnings("rawtypes")
 	public ImageLoader() {
-		ClassLoader cldr = this.getClass().getClassLoader();
+		images = new HashMap<Class,Image>();
+		cldr = this.getClass().getClassLoader();
 		try {
-			wall = new ImageIcon(cldr.getResource("otherBlock.png"));
-	 		floor = new ImageIcon(cldr.getResource("floorTile.png"));
-	 		player = new ImageIcon(cldr.getResource("openDoor.png"));
-  		}  	
+			images.put(Wall.class, new ImageIcon(cldr.getResource("images\\normalBlock.png")).getImage());
+			images.put(Square.class, new ImageIcon(cldr.getResource("images\\floor1.png")).getImage());
+			images.put(Player.class, new ImageIcon(cldr.getResource("images\\player.png")).getImage());
+			images.put(Items.Coin.class, new ImageIcon(cldr.getResource("images\\coins.png")).getImage());
+  		} 
      	catch (Exception e){
 			try{	
 				PrintStream p = new PrintStream(
@@ -25,5 +31,8 @@ public class ImageLoader {
 			{
 			}
      	}
+	}
+	public Image getImage(Object obj) {
+		return obj==null?images.get(Square.class):images.get(obj.getClass());
 	}
 }

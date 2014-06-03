@@ -1,5 +1,7 @@
 package source;
 
+
+
 public class Wall extends MapFeature{
 	public Wall() {
 		

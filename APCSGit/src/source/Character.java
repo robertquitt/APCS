@@ -1,7 +1,8 @@
 package source;
 
-public abstract class Character implements CharDisplayable {
-	
+
+
+public abstract class Character {
 	protected Dungeon dungeon;
 	protected String myName;
 	protected char ID = '@';
@@ -11,6 +12,40 @@ public abstract class Character implements CharDisplayable {
 	protected Inventory bag;
 	protected int ac;
 	
+	public void putSelfInDungeon(Dungeon gr, Location loc)
+    {
+        if (dungeon != null)
+            throw new IllegalStateException(
+                    "This actor is already contained in a grid.");
+
+        gr.setCharacter(this, loc);
+        dungeon = gr;
+        this.loc = loc;
+    }
+	public void moveTo(Location newLocation)
+    {
+        if (dungeon == null)
+            throw new IllegalStateException("This character is not in a dungeon.");
+        if (dungeon.getCharacter(loc) != this)
+            throw new IllegalStateException(
+                    "The dungeon contains a different character at location "
+                            + loc + ".");
+        if (!dungeon.isValid(newLocation))
+            throw new IllegalArgumentException("Location " + newLocation
+                    + " is not valid.");
+
+        if (newLocation.equals(loc))
+            return;
+        dungeon.setCharacter(null,loc);
+        loc = newLocation;
+        dungeon.setCharacter(this, loc);
+    }
+	
+	
+	//Setters and Getters
+	public char getDisplayChar() {
+		return ID;
+	}
 	public String getMyName() {
 		return myName;
 	}
@@ -41,35 +76,5 @@ public abstract class Character implements CharDisplayable {
 	public void setAc(int ac) {
 		this.ac = ac;
 	}
-	public char getDisplayChar() {
-		return ID;
-	}
-	public void putSelfInDungeon(Dungeon gr, Location loc)
-    {
-        if (dungeon != null)
-            throw new IllegalStateException(
-                    "This actor is already contained in a grid.");
-
-        gr.setCharacter(this, loc);
-        dungeon = gr;
-        this.loc = loc;
-    }
-	public void moveTo(Location newLocation)
-    {
-        if (dungeon == null)
-            throw new IllegalStateException("This character is not in a dungeon.");
-        if (dungeon.getCharacter(loc) != this)
-            throw new IllegalStateException(
-                    "The dungeon contains a different character at location "
-                            + loc + ".");
-        if (!dungeon.isValid(newLocation))
-            throw new IllegalArgumentException("Location " + newLocation
-                    + " is not valid.");
-
-        if (newLocation.equals(loc))
-            return;
-        dungeon.setCharacter(null,loc);
-        loc = newLocation;
-        dungeon.setCharacter(this, loc);
-    }
+	
 }

@@ -1,6 +1,7 @@
 package source;
 
-public class Items implements CharDisplayable{
+
+public class Items {
 	boolean identified = false;
 	int count;
 	final int maxCount;

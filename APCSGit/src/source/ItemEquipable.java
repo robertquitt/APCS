@@ -1,9 +1,10 @@
+package source;
 /*
  * A type of item which can be equiped by Player
  * It cannot stack
  * @author Robert Q
  */
-package source;
+
 
 public class ItemEquipable extends Items {
 	public EquipSlot slot; 

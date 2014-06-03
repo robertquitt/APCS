@@ -1,5 +1,6 @@
 package source;
 
+
 import java.util.Scanner;
 
 /**
@@ -10,26 +11,59 @@ import java.util.Scanner;
 public class CharGUI {
 	Dungeon dungeon;
 	Scanner scanner;
+	Player player;
 	public CharGUI() {
 		scanner = new Scanner(System.in);
 		dungeon = new Dungeon();
+		player = dungeon.getPlayer();
 	}
 	public void run(){
-		Player player = new Player("dingus", Integer.MAX_VALUE);
-		player.putSelfInDungeon(dungeon, new Location(20,20));
-		for (int i = 0; i < Dungeon.ROWS; i++) {
-			dungeon.setFeature(new Wall(), new Location(i,0));
-			dungeon.setFeature(new Wall(), new Location(i,Dungeon.COLS-1));
-		}
-		for (int i = 0; i < Dungeon.COLS; i++) {
-			dungeon.setFeature(new Wall(), new Location(0,i));
-			dungeon.setFeature(new Wall(), new Location(Dungeon.ROWS-1,i));
-		}
-		String input;
 		do {
 			System.out.println(dungeon.printlvl());
-			input = scanner.nextLine();
-			player.parse(input);
+			switch(scanner.next().toLowerCase()) {
+			case "move":
+				switch(scanner.next().toLowerCase()) {
+				case "north": 
+				case "up":
+					player.move(Location.NORTH);
+					break;
+				case "west":
+				case "left":
+					player.move(Location.WEST);
+					break;
+				case "south":
+				case "down":
+					player.move(Location.SOUTH);
+					break;			
+				case "east":
+				case "right":
+					player.move(Location.EAST);
+					break;
+				}
+				break;
+			case "commit":
+				switch(scanner.next().toLowerCase()) {
+				case "suicide":
+					System.out.println("Removed self from grid");
+					System.exit(0);
+					break;
+				case "changes":
+					switch((int)(Math.random()*3)) {
+					case 0:
+						System.err.println("Non-fast forward.");
+						break;
+					case 1:
+						System.err.println("Dirty git index.");
+						break;
+					case 2:
+						System.err.println("Unable to push changes to upstream.");
+						break;
+					}
+				}
+				break;
+			default:	
+				break;
+			}
 		} while(true);
 	}
 	public static void main(String[] args) {

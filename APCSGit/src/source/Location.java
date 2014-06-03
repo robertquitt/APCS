@@ -1,23 +1,5 @@
 package source;
-/* 
- * AP(r) Computer Science GridWorld Case Study:
- * Copyright(c) 2002-2006 College Entrance Examination Board 
- * (http://www.collegeboard.com).
- *
- * This code is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * @author Alyce Brady
- * @author Chris Nevison
- * @author APCS Development Committee
- * @author Cay Horstmann
- */
+
 
 /**
  * A <code>Location</code> object represents the row and column of a location

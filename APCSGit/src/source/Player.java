@@ -1,7 +1,6 @@
 package source;
 
 public class Player extends Character{
-	//Robert Quitt
 	private int myClass;
 	private int str;
 	private int dex;
@@ -112,14 +111,20 @@ public class Player extends Character{
 		if (dungeon.isValid(toLoc)){
 			if (dungeon.getCharacter(toLoc) instanceof Monster){
 				attack(dungeon.getCharacter(toLoc));
-			} else if (dungeon.getFeature(toLoc)!=null||dungeon.getFeature(toLoc).isTraversable()){
+			} else if (dungeon.getFeature(toLoc)==null||dungeon.getFeature(toLoc).isTraversable()){
 				moveTo(toLoc);
 			}
 		}
 	}
-
-	private void attack(Character character) {
-		// TODO Auto-generated method stub
+	
+	public boolean attack(Character foe) {
+		int attack = (dex-10)/2;
+		if (attack-ac>=0) {
+			foe.setHp((int)(Math.random()*bag.getPrimary().getAttack())+(str-10)/2);
+			return true;
+		}
+		else 
+			return false;
 	}
 
 	public void drop(int selection) {
