@@ -15,10 +15,10 @@ public class ImageLoader {
 		images = new HashMap<Class,Image>();
 		cldr = this.getClass().getClassLoader();
 		try {
-			images.put(Wall.class, new ImageIcon(cldr.getResource(".\\images\\normalBlock.png")).getImage());
-			images.put(Square.class, new ImageIcon(cldr.getResource(".\\images\\floor1.png")).getImage());
-			images.put(Player.class, new ImageIcon(cldr.getResource(".\\images\\player.png")).getImage());
-			images.put(Items.Coin.class, new ImageIcon(cldr.getResource(".\\images\\coins.png")).getImage());
+			images.put(Wall.class, new ImageIcon(cldr.getResource("images\\normalBlock.png")).getImage());
+			images.put(Square.class, new ImageIcon(cldr.getResource("images\\floor1.png")).getImage());
+			images.put(Player.class, new ImageIcon(cldr.getResource("images\\player.png")).getImage());
+			images.put(Items.Coin.class, new ImageIcon(cldr.getResource("images\\coins.png")).getImage());
   		} 
      	catch (Exception e){
 			try{	

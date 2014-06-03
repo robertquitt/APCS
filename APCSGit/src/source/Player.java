@@ -111,7 +111,7 @@ public class Player extends Character{
 		if (dungeon.isValid(toLoc)){
 			if (dungeon.getCharacter(toLoc) instanceof Monster){
 				attack(dungeon.getCharacter(toLoc));
-			} else if (dungeon.getFeature(toLoc)!=null||dungeon.getFeature(toLoc).isTraversable()){
+			} else if (dungeon.getFeature(toLoc)==null||dungeon.getFeature(toLoc).isTraversable()){
 				moveTo(toLoc);
 			}
 		}

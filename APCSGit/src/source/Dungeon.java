@@ -38,17 +38,24 @@ public class Dungeon implements Iterable<Square>{
 		Location center = null;
 		boolean oc = false;
 		while (!oc){
-			center = new Location((int)(Math.random()*47+1),(int)(Math.random()*98+1));
-			if (dgrid[center.getRow()][center.getCol()].equals(null)){
+			center = new Location((int)(Math.random()*(ROWS-2)+1),(int)(Math.random()*(COLS-2)+1));
+			if (dgrid[center.getRow()][center.getCol()].getOccFeature()==null){
 				oc=true;
 			}
 		}
-		int radius = (int)(Math.random()*6)+2;
+		oc = false;
+		int radius=0;
+		while (!oc){
+			radius = (int)(Math.random()*6)+2;
+			if (center.getCol()-radius>=0 && center.getCol()+radius<COLS && center.getRow()-radius >=0 && center.getRow()+radius <ROWS){
+				oc = true;
+			}
+		}
 		for (int i=center.getRow()-radius;i<center.getRow()+radius;i++){
 			dgrid[i][center.getCol()-radius].setOccFeature(new Wall());
 			dgrid[i][center.getCol()+radius].setOccFeature(new Wall());
 		}
-		for (int j=center.getCol()-radius;j<center.getCol()+radius;j++){
+		for (int j=center.getCol()-radius;j<=center.getCol()+radius;j++){
 			dgrid[center.getRow()-radius][j].setOccFeature(new Wall());
 			dgrid[center.getRow()+radius][j].setOccFeature(new Wall());
 		}

@@ -12,11 +12,11 @@ public class GUI extends JFrame implements KeyListener{
 	private ImageLoader il;
 	public GUI(){
 		super("Rogue-Like");
-        setLayout(new GridLayout(30,80));
+        setLayout(new GridLayout(100,100));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addKeyListener(this);
         setSize(400,400);
-        this.setResizable(false);
+        this.setResizable(true);
         setVisible(true);
         dungeon = new Dungeon();
         player = dungeon.getPlayer();
