@@ -2,7 +2,7 @@ package source;
 
 
 
-public abstract class Character {
+public abstract class Character implements Named{
 	protected Dungeon dungeon;
 	protected String myName;
 	protected char ID = '@';

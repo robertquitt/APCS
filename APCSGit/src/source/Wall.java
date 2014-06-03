@@ -9,6 +9,9 @@ public class Wall extends MapFeature{
 	public char getDisplayChar() {
 		return 'W'; //change later 
 	}
+	public String getName() {
+		return "wall";
+	}
 	@Override
 	public boolean isTraversable() {
 		return false;

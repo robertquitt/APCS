@@ -1,7 +1,7 @@
 package source;
 
 
-public class Items {
+public class Items implements Named {
 	boolean identified = false;
 	int count;
 	final int maxCount;
@@ -35,8 +35,4 @@ public class Items {
 	public char getDisplayChar() {
 		return disp;
 	}
-	//Example:
-	// Items coins = new Items.Coin(100);
-	public static class Coin extends Items{public Coin(int count){super("Coins",count);disp='$';}}
-	public static class FoodRation extends Items{public FoodRation(){super("Food Ration",1,1);disp='%';}}
 }

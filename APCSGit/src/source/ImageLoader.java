@@ -8,17 +8,16 @@ import java.util.HashMap;
 import javax.swing.*;
 public class ImageLoader {
 	private ClassLoader cldr;
-	@SuppressWarnings("rawtypes")
-	private HashMap<Class,Image> images;
-	@SuppressWarnings("rawtypes")
+	private HashMap<String,Image> images;
 	public ImageLoader() {
-		images = new HashMap<Class,Image>();
+		images = new HashMap<String,Image>();
 		cldr = this.getClass().getClassLoader();
 		try {
-			images.put(Wall.class, new ImageIcon(cldr.getResource("images\\normalBlock.png")).getImage());
-			images.put(Square.class, new ImageIcon(cldr.getResource("images\\floor1.png")).getImage());
-			images.put(Player.class, new ImageIcon(cldr.getResource("images\\player.png")).getImage());
-			images.put(Items.Coin.class, new ImageIcon(cldr.getResource("images\\coins.png")).getImage());
+			images.put("blank", new ImageIcon(cldr.getResource("images\\blank.png")).getImage());
+			images.put("wall", new ImageIcon(cldr.getResource("images\\normalBlock.png")).getImage());
+			images.put("floor", new ImageIcon(cldr.getResource("images\\floor1.png")).getImage());
+			images.put("player", new ImageIcon(cldr.getResource("images\\player.png")).getImage());
+			images.put("coins", new ImageIcon(cldr.getResource("images\\coins.png")).getImage());
   		} 
      	catch (Exception e){
 			try{	
@@ -32,7 +31,7 @@ public class ImageLoader {
 			}
      	}
 	}
-	public Image getImage(Object obj) {
-		return obj==null?images.get(Square.class):images.get(obj.getClass());
+	public Image getImage(Named obj) {
+		return images.containsKey(obj.getName())?images.get(obj.getName()):images.get("blank");
 	}
 }

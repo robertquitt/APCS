@@ -89,7 +89,7 @@ public class Inventory {
 		return inv.size()==0?' ':inv.get(0).getDisplayChar();
 	}
 	
-	public Object getDisplayedObject() {
+	public Named getDisplayedObject() {
 		return inv.size()==0?null:inv.get(0).getDisplayChar();
 	}
 	

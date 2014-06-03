@@ -120,7 +120,7 @@ public class Player extends Character{
 	public boolean attack(Character foe) {
 		int attack = (dex-10)/2;
 		if (attack-ac>=0) {
-			foe.setHp((int)(Math.random()*bag.getPrimary().getAttack())+(str-10)/2);
+			foe.setHp((int)(Math.random()*( bag.getPrimary()).getAttack())+(str-10)/2);
 			return true;
 		}
 		else 
@@ -149,5 +149,10 @@ public class Player extends Character{
 			System.out.println("didnt move");
 			break;
 		}
+	}
+
+	@Override
+	public String getName() {
+		return "player";
 	}
 }

@@ -17,7 +17,7 @@ public class Square {
 		inv = new Inventory();
 	}
 
-	public Object getDisplayedObject() { //change to char
+	public Named getDisplayedObject() { //change to char
 		if (occupant!=null) {
 			return occupant; //create this
 		}else if (occFeature!=null){
