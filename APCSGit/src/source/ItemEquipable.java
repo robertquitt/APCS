@@ -5,7 +5,7 @@
  */
 package source;
 
-public abstract class ItemEquipable extends Items {
+public class ItemEquipable extends Items {
 	public EquipSlot slot; 
 	public ItemEquipable(String name,EquipSlot slot) {
 		super(name,1,1);
@@ -13,15 +13,13 @@ public abstract class ItemEquipable extends Items {
 	}
 
 	
-	public abstract int getDefense();
-	public abstract int getAttack();
 	public EquipSlot getType()
 	{
 		return slot;
 	}
 
 	
-	public class Helm extends ItemEquipable
+	public static class Helm extends ItemEquipable
 	{
 		private int specDef;
 		public Helm (String name, int def)
@@ -40,8 +38,9 @@ public abstract class ItemEquipable extends Items {
 		}
 		
 	}
+	Helm clothhelm = new Helm("cloth",3);
 	
-	public class Armor extends ItemEquipable
+	public static class Armor extends ItemEquipable
 	{
 		private int specDef;
 		public Armor (String name, int def)
@@ -60,7 +59,7 @@ public abstract class ItemEquipable extends Items {
 		}
 	}
 	
-	public class Leggings extends ItemEquipable
+	public static class Leggings extends ItemEquipable
 	{
 		private int specDef;
 		public Leggings (String name, int def)
@@ -78,7 +77,7 @@ public abstract class ItemEquipable extends Items {
 			return -1;
 		}
 	}
-	public class oneHandWeapon extends ItemEquipable
+	public static class oneHandWeapon extends ItemEquipable
 	{
 		private int specAtt;
 		public oneHandWeapon (String name, int att)
@@ -97,7 +96,7 @@ public abstract class ItemEquipable extends Items {
 		}
 	}
 	
-	public class twoHandWeapon extends ItemEquipable
+	public static class twoHandWeapon extends ItemEquipable 
 	{
 		private int specAtt;
 		public twoHandWeapon (String name, int att)
@@ -115,7 +114,7 @@ public abstract class ItemEquipable extends Items {
 			return specAtt;
 		}
 	}
-	public class shield extends ItemEquipable
+	public static class shield extends ItemEquipable
 	{
 		private int specDef;
 		public shield (String name, int def)
