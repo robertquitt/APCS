@@ -7,12 +7,14 @@ public class Monster extends Character{
 	int damage;
 	Inventory stuff;
 	boolean detectChar;
-	public Monster(String name) {
+	public Monster(String name, int newAttack, int newDamage, int newXp, int newCr) {
 		myName = name;
+		xp=newXp;
+		cr=newCr;
+		attack=newAttack;
+		damage=newDamage;
 	}
-	public void attack(){
-		
-	}
+	
 	public void move(){
 		
 	}
