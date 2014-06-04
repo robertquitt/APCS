@@ -29,9 +29,14 @@ public class Monster extends Character{
 	public boolean attack(Character foe) {
 	if (attack>=foe.getAc()){
 		foe.setHp(foe.getHp()-(int)(Math.random()*damage));
+		GUI.print("The "+ myName +" hits");
+		if (foe.getHp()<0){
+			//terminate game
+		}
 		return true;
 	}
 	else
+		GUI.print("The "+ myName +" misses");
 		return false;
 	}
 	

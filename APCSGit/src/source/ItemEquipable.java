@@ -19,10 +19,10 @@ public class ItemEquipable extends Items {
 	}
 	
 	public int getAttack(){
-		return -1;
+		return 0;
 	}
 	public int getDefense() {
-		return -1;
+		return 0;
 	}
 	
 	public static class Helm extends ItemEquipable
@@ -113,7 +113,7 @@ public class ItemEquipable extends Items {
 			
 		public int getDefense()
 		{
-			return -1;
+			return 0;
 		}
 		public int getAttack()
 		{

@@ -118,21 +118,30 @@ public class Player extends Character{
 	}
 	
 	public boolean attack(Character foe) {
-		int attack = (dex-10)/2;
+		int attack = (dex-10)/2 + (int) Math.random()*20;
 		if (attack-ac>=0) {
-			foe.setHp((int)(Math.random()*( bag.getPrimary()).getAttack())+(str-10)/2);
+			foe.setHp(foe.getHp()-(int)(Math.random()*( bag.getPrimary()).getAttack())+(str-10)/2);
+			GUI.print("Your " + bag.getPrimary().getName() + "strikes the " + foe.getName());
+			if (foe.getHp()<1){
+				GUI.print("The " + foe.getName() + " is killed");
+			}
 			return true;
 		}
 		else 
+			GUI.print("Your " + bag.getPrimary().getName() + "misses");
 			return false;
 	}
 
 	public void drop(int selection) {
 		bag.remove(selection);
 	}
-
+	
 	@Override
 	public String getName() {
 		return "player";
+	}
+	
+	public int getAc() {
+		return bag.getArmor().getDefense()+bag.getSecondary().getDefense() + (dex-10)/2;
 	}
 }
