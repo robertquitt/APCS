@@ -17,7 +17,7 @@ public class EquipData {
 	
 	ItemEquipable cuttingBoard = new ItemEquipable.shield("Wooden Shield", 1);
 	ItemEquipable potLid = new ItemEquipable.shield("Pot Lid",2);
-	ItemEquipable bronzeBlocker = new ItemEquipable.shield("Bronze Blocker",3);
+	ItemEquipable bronzeBuckler = new ItemEquipable.shield("Bronze Buckler",3);
 	ItemEquipable ironShield = new ItemEquipable.shield("Iron Shield",4);
 	
 	ItemEquipable clothHat = new ItemEquipable.Helm("Cloth Hat",1);
