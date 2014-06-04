@@ -35,4 +35,8 @@ public class Items implements Named {
 	public char getDisplayChar() {
 		return disp;
 	}
+	public Items clone()
+	{
+		return new Items(name, count, maxCount);
+	}
 }
