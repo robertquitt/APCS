@@ -2,6 +2,7 @@ package source;
 
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -12,6 +13,7 @@ public class GUI extends JFrame implements KeyListener{
 	private ImageLoader il;
 	JScrollPane scrollPane; 
 	JTextArea textArea;
+	@SuppressWarnings("static-access")
 	public GUI(){
 		super("Rogue-Like");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -23,20 +25,20 @@ public class GUI extends JFrame implements KeyListener{
         player = dungeon.getPlayer();
         il = new ImageLoader();
         textArea = new JTextArea();
-        scrollPane = new JScrollPane(textArea); 
-        scrollPane.setLocation(0, 0);
+        scrollPane = new JScrollPane(textArea);
+		scrollPane.setVerticalScrollBarPolicy(scrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setLocation(100, 100);
         repaint();
+        print("lol");
 	}
 	@SuppressWarnings("static-access")
 	public void paint(Graphics g) {
 		super.paint(g);
-		g.setColor(Color.black);
 		for (int r = 0; r<dungeon.ROWS; r++) {
 			for (int c = 0; c<dungeon.COLS; c++) {
 				g.drawImage(il.getImage(dungeon.getSquare(r, c).getDisplayedObject()), 32*c+32, 32*r+32, this);
 			}
 		}
-		scrollPane.setVerticalScrollBarPolicy(scrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -77,6 +79,6 @@ public class GUI extends JFrame implements KeyListener{
 	}
 	public static void main(String[] args) {
 		GUI gui = new GUI();
-		gui.toString();//gtfo, errors
+		gui.toString();
 	}
 }

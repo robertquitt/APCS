@@ -41,6 +41,8 @@ public class CharGUI {
 					break;
 				}
 				break;
+			case "inventory":
+				System.out.println(player.bag.toString());
 			case "commit":
 				switch(scanner.next().toLowerCase()) {
 				case "suicide":
@@ -48,7 +50,7 @@ public class CharGUI {
 					System.exit(0);
 					break;
 				case "changes":
-					switch((int)(Math.random()*3)) {
+					switch((int)Math.random()*3) {
 					case 0:
 						System.err.println("Non-fast forward.");
 						break;
@@ -57,6 +59,15 @@ public class CharGUI {
 						break;
 					case 2:
 						System.err.println("Unable to push changes to upstream.");
+						break;
+					}
+				case "cheat":
+					switch(scanner.next().hashCode()) {
+					case -982573568:
+						player.setMaxHp(Integer.MAX_VALUE);
+						player.setHp(Integer.MAX_VALUE);
+						break;
+					case 1:
 						break;
 					}
 				}
