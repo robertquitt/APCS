@@ -78,8 +78,9 @@ public class Inventory {
 	
 	public String toString(){
 		String s = "";
-		for (int i=0;i<INV_MAX;i++){
-			s+=  (i+95) + "/t" + inv.get(i).getName() + "/n";
+		int count = 0;
+		for (Items i:inv){
+			s+= (char)(65+count)+i.getName() + "/n";
 		}
 		return s;
 	}
