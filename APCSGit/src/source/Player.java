@@ -131,26 +131,6 @@ public class Player extends Character{
 		bag.remove(selection);
 	}
 
-	public void parse(String input) {
-		switch((input+" ").charAt(0)) {
-		case 'w':
-			move(Location.NORTH);
-			break;
-		case 'a':
-			move(Location.WEST);
-			break;
-		case 's':
-			move(Location.SOUTH);
-			break;
-		case 'd':
-			move(Location.EAST);
-			break;
-		default:
-			System.out.println("didnt move");
-			break;
-		}
-	}
-
 	@Override
 	public String getName() {
 		return "player";

@@ -32,6 +32,6 @@ public class ImageLoader {
      	}
 	}
 	public Image getImage(Named obj) {
-		return images.containsKey(obj.getName())?images.get(obj.getName()):images.get("blank");
+		return obj==null?null:images.containsKey(obj.getName())?images.get(obj.getName()):images.get("blank");
 	}
 }

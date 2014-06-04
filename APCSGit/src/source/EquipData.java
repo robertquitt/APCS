@@ -1,12 +1,5 @@
 package source;
 
-import source.ItemEquipable.Armor;
-import source.ItemEquipable.Helm;
-import source.ItemEquipable.Leggings;
-import source.ItemEquipable.oneHandWeapon;
-import source.ItemEquipable.shield;
-import source.ItemEquipable.twoHandWeapon;
-
 //maxAtt = 12;
 //maxDef = 12;
 public class EquipData {

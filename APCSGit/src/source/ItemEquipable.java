@@ -13,12 +13,17 @@ public class ItemEquipable extends Items {
 		this.slot = slot;
 	}
 
-	
 	public EquipSlot getType()
 	{
 		return slot;
 	}
-
+	
+	public int getAttack(){
+		return -1;
+	}
+	public int getDefense() {
+		return -1;
+	}
 	
 	public static class Helm extends ItemEquipable
 	{

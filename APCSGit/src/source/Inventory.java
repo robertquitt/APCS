@@ -38,7 +38,7 @@ public class Inventory {
 	public Items remove(int rem) {
 		return inv.remove(rem);
 	}
-	
+		
 	public boolean remove (Items target){
 		return inv.remove(target);
 	}
@@ -90,7 +90,7 @@ public class Inventory {
 	}
 	
 	public Named getDisplayedObject() {
-		return inv.size()==0?null:inv.get(0).getDisplayChar();
+		return inv.size()==0?null:inv.get(0);
 	}
 	
 	public void equipItem(ItemEquipable item)

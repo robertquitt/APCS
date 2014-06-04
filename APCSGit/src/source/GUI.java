@@ -12,7 +12,6 @@ public class GUI extends JFrame implements KeyListener{
 	private ImageLoader il;
 	public GUI(){
 		super("Rogue-Like");
-        setLayout(new GridLayout(100,100));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addKeyListener(this);
         setSize(400,400);
@@ -29,7 +28,8 @@ public class GUI extends JFrame implements KeyListener{
 		g.setColor(Color.black);
 		for (int r = 0; r<dungeon.ROWS; r++) {
 			for (int c = 0; c<dungeon.COLS; c++) {
-				g.drawImage(il.getImage(dungeon.getSquare(r, c).getDisplayedObject()), 32*c+32, 32*r+32, this);
+				g.drawImage(il.getImage(player), 100, 100, this);
+				//g.drawImage(il.getImage(dungeon.getSquare(r, c).getDisplayedObject()), 32*c+32, 32*r+32, this);
 			}
 		}
 	}
