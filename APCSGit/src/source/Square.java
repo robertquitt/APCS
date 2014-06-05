@@ -17,13 +17,13 @@ public class Square {
 		inv = new Inventory();
 	}
 
-	public Named getDisplayedObject() { //change to char
+	public Named getDisplayedObject() {
 		if (occupant!=null) {
-			return occupant; //create this
+			return occupant; 
 		}else if (occFeature!=null){
-			return occFeature;//remove later
+			return occFeature;
 		}else{ 
-			return inv.getDisplayedObject();//this returns null if inv is empty
+			return inv.getDisplayedObject();
 		}
 	}
 
@@ -46,6 +46,10 @@ public class Square {
 	public Inventory getInv() {
 		return inv;
 	}
+	
+	public void addItem(Items item) {
+		inv.add(item);
+	}
 
 	public char getDisplayChar() {
 		if (occupant!=null) {
@@ -54,7 +58,6 @@ public class Square {
 			return occFeature.getDisplayChar();//remove later
 		}else{ 
 			return '.';
-			//return inv.getDisplayChar();
 		}
 	}
 	

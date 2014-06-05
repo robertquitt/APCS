@@ -16,6 +16,8 @@ public class Player extends Character{
 		myName = name;
 		myClass = cChoice;
 		bag = new Inventory();
+		turns = 0;
+		xp = 0;
 	}
 
 	public void setMyName(String myName) {
@@ -113,6 +115,11 @@ public class Player extends Character{
 				attack(dungeon.getCharacter(toLoc));
 			} else if (dungeon.getFeature(toLoc)==null||dungeon.getFeature(toLoc).isTraversable()){
 				moveTo(toLoc);
+				if (!dungeon.getSquare(toLoc).getInv().isEmpty()) {
+					for (Items i:dungeon.getSquare(toLoc).getInv()) {
+						bag.add(i);
+					}
+				}
 			}
 		}
 	}

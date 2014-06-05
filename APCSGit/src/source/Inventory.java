@@ -1,6 +1,7 @@
 package source;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 
 //modified by Brandon, 5-22-14
@@ -9,7 +10,7 @@ import java.util.ArrayList;
  When equipping item, set Item from ArrayList to instance variable and remove from ArrayList
  
  */
-public class Inventory {
+public class Inventory implements Iterable<Items>{
 	
 	private ItemEquipable HELMET, ARMOR, LEGGINGS, PRIM, SEC;
 	
@@ -178,4 +179,9 @@ public class Inventory {
 		}
 	}
 }
+
+	@Override
+	public Iterator<Items> iterator() {
+		return inv.iterator();
+	}
 }
