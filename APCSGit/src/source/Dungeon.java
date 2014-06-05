@@ -61,20 +61,6 @@ public class Dungeon implements Iterable<Square>{
 			dgrid[center.getRow()+radius][j].setOccFeature(new Wall());
 		}
 	}
-	
-	public void genPath(Location door1, Location door2){
-		int dir = door1.getDirectionToward(door2);
-		if (door1.equals(door2)){
-			return;
-		}
-		if (dgrid[door1.getAdjacentLocation(dir).getRow()][door1.getAdjacentLocation(dir).getCol()].getOccFeature()==null){
-			dgrid[door1.getAdjacentLocation(dir).getRow()][door1.getAdjacentLocation(dir).getCol()].setOccFeature(new FloorTile());
-			genPath(door1.getAdjacentLocation(dir),door2);
-		}
-		else{
-			genPath(door1.getAdjacentLocation(dir+90),door2);
-		}
-	}
 	public String printlvl() {
 		String s = "";
 		for (int x=0; x<ROWS;x++) {

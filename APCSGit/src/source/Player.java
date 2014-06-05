@@ -124,14 +124,13 @@ public class Player extends Character{
 		}
 	}
 	
-	public boolean attack(Monster foe) {
+	public boolean attack(Character foe) {
 		int attack = (dex-10)/2 + (int) Math.random()*20;
 		if (attack-ac>=0) {
 			foe.setHp(foe.getHp()-(int)(Math.random()*( bag.getPrimary()).getAttack())+(str-10)/2);
 			GUI.print("Your " + bag.getPrimary().getName() + "strikes the " + foe.getName());
 			if (foe.getHp()<1){
 				GUI.print("The " + foe.getName() + " is killed");
-				addXP(foe.getCR()*2-level);
 			}
 			return true;
 		}
