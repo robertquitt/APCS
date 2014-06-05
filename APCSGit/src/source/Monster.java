@@ -5,14 +5,21 @@ public class Monster extends Character{
 	int cr;
 	int attack;
 	int damage;
+	static final int BASE_XP = 500;
 	Inventory stuff;
 	boolean detectChar;
-	public Monster(String name, int newAttack, int newDamage, int newXp, int newCr) {
+	public Monster(String name, int newAttack, int newDamage, int newAc, double newXp, int newCr) {
 		myName = name;
-		xp=newXp;
+		xp= (int)( BASE_XP*newXp);
 		cr=newCr;
+		ac=newAc;
 		attack=newAttack;
 		damage=newDamage;
+	}
+	
+	public Monster (Monster monster)
+	{
+		this(monster.myName,monster.attack, monster.damage, monster.ac, monster.xp, monster.cr);
 	}
 	
 	public void move(){
