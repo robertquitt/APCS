@@ -66,6 +66,10 @@ public abstract class Character implements Named{
 		return maxHp;
 	}
 	
+	public Location getLocation(){
+		return loc;
+	}
+	
 	public void setMaxHp(int max){
 		this.maxHp = max;
 	}
