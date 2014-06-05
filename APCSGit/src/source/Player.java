@@ -1,5 +1,7 @@
 package source;
 
+import java.util.Iterator;
+
 public class Player extends Character{
 	private int myClass;
 	private int str;
@@ -102,7 +104,7 @@ public class Player extends Character{
 	}
 
 	public String toString(){
-		return (myName + " the level " + level + " " + myClass + " /n" + "HP AC STR DEX CON INT WIS CHA TURNS /n" + hp + " "+ ac + " "+ str + " "+ dex + " "+ con + " "+ intel + " "+ wis + " "+ cha + " "+ turns);
+		return (myName + " the level " + level + " " + myClass + "\n" + "HP AC STR DEX CON INT WIS CHA TURNS \n" + hp + " "+ ac + " "+ str + " "+ dex + " "+ con + " "+ intel + " "+ wis + " "+ cha + " "+ turns);
 	}
 
 	public Dungeon getGrid(){
@@ -116,8 +118,9 @@ public class Player extends Character{
 			} else if (dungeon.getFeature(toLoc)==null||dungeon.getFeature(toLoc).isTraversable()){
 				moveTo(toLoc);
 				if (!dungeon.getSquare(toLoc).getInv().isEmpty()) {
-					for (Items i:dungeon.getSquare(toLoc).getInv()) {
-						bag.add(i);
+					for (Iterator<Items> iter = dungeon.getSquare(toLoc).getInv().iterator(); iter.hasNext();) {
+						bag.add(iter.next());
+						iter.remove();
 					}
 				}
 			}

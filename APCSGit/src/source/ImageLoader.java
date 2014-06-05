@@ -17,7 +17,7 @@ public class ImageLoader {
 			images.put("wall", new ImageIcon(cldr.getResource("images\\normalBlock.png")).getImage());
 			images.put("floor", new ImageIcon(cldr.getResource("images\\floor1.png")).getImage());
 			images.put("player", new ImageIcon(cldr.getResource("images\\player.png")).getImage());
-			images.put("coins", new ImageIcon(cldr.getResource("images\\coins.png")).getImage());
+			images.put("coins", new ImageIcon(cldr.getResource("images\\coin.png")).getImage());
   		} 
      	catch (Exception e){
 			try{	

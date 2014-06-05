@@ -33,7 +33,7 @@ public class Items implements Named {
 		return disp;
 	}	
 	public String toString(){
-		return (count==1?"":count)+" "+getName();
+		return count+" "+getName();
 	}
 	public char getDisplayChar() {
 		return disp;

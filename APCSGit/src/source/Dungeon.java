@@ -32,7 +32,9 @@ public class Dungeon implements Iterable<Square>{
 		}
 		player = new Player("Dingus", 69);
 		player.putSelfInDungeon(this,new Location(1,1));
-		this.getSquare(2, 2).addItem(new Items("coins",4));
+		for (Square sq:this) {
+			sq.addItem(new Items("coins",1));
+		}
 	}
 	
 	public void generateRoom() {
@@ -123,11 +125,11 @@ public class Dungeon implements Iterable<Square>{
 		private int row,col;
 		public DungeonIterator() {
 			row = 0;
-			col = -1;
+			col = 0;
 		}
 		@Override
 		public boolean hasNext() {
-			return row < ROWS || col < COLS;
+			return row < ROWS-1 || col < COLS-1;
 		}
 
 		@Override

@@ -79,9 +79,9 @@ public class Inventory implements Iterable<Items>{
 	
 	public String toString(){
 		String s = "";
-		int count = 0;
+		int index = 0;
 		for (Items i:inv){
-			s+= (char)(65+count)+i.getName() + "/n";
+			s+= (char)(65+index)+") "+i.toString() + "\n";
 		}
 		return s;
 	}
