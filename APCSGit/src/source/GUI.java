@@ -29,16 +29,20 @@ public class GUI extends JFrame implements KeyListener{
 		scrollPane.setVerticalScrollBarPolicy(scrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setLocation(100, 100);
         repaint();
-        print("lol");
+        printConsole("lol");
 	}
 	@SuppressWarnings("static-access")
 	public void paint(Graphics g) {
 		super.paint(g);
+		g.setColor(Color.BLACK);
 		for (int r = 0; r<dungeon.ROWS; r++) {
 			for (int c = 0; c<dungeon.COLS; c++) {
 				g.drawImage(il.getImage(dungeon.getSquare(r, c).getDisplayedObject()), 32*c+32, 32*r+32, this);
 			}
 		}
+		drawString(g,player.toString(), 100, 350);
+		drawString(g,player.getMyInv().toString(), 0, 0);
+		System.out.println(player.getMyInv().toString());
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -73,9 +77,17 @@ public class GUI extends JFrame implements KeyListener{
 	public void keyTyped(KeyEvent arg0) {
 		
 	}
-	public void print(String str) {
+	public void printConsole(String str) {
 		textArea.append(str);
 		repaint();
+	}
+	public void drawString(Graphics g, String str, int x, int y) {
+		int i = 0;
+		while(str.indexOf('\n', i)!=-1) {
+			g.drawString(str.substring(i,str.indexOf('\n', i)+1), x, y);
+			i = str.indexOf('\n',i)+1;
+			y+=10;
+		}
 	}
 	public static void main(String[] args) {
 		GUI gui = new GUI();

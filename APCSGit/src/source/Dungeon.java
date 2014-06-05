@@ -18,20 +18,21 @@ public class Dungeon implements Iterable<Square>{
 		construct();
 	}
 	private void construct() {
-		/*for(int r = 0; r<ROWS; r++) {
+		for(int r = 0; r<ROWS; r++) {
 			dgrid[r][0].setOccFeature(new Wall());
 			dgrid[r][COLS-1].setOccFeature(new Wall());
 		}
 		for(int c = 0; c<COLS; c++) {
 			dgrid[0][c].setOccFeature(new Wall());
 			dgrid[ROWS-1][c].setOccFeature(new Wall());
-		}*/
+		}
 		int rooms = (int)(Math.random()*5)+4;
 		for (int i=0;i<rooms;i++){
 			generateRoom();
 		}
-		player = new Player("Dingus", 0);
-		player.putSelfInDungeon(this, new Location((int)(Math.random()*(ROWS-2))+1,(int)(Math.random()*(COLS-2))+1));
+		player = new Player("Dingus", 69);
+		player.putSelfInDungeon(this,new Location(1,1));
+		this.getSquare(2, 2).getInv().add(new Items("coins",4));
 	}
 	
 	public void generateRoom() {
