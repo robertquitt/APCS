@@ -5,14 +5,22 @@ public class Monster extends Character{
 	int cr;
 	int attack;
 	int damage;
+	static final int BASE_XP = 500;
 	Inventory stuff;
 	boolean detectChar;
-	public Monster(String name, int newAttack, int newDamage, int newXp, int newCr) {
+	public Monster(String name, int newAttack, int newDamage, int newAc, int newHp, double newXp, int newCr) {
 		myName = name;
-		xp=newXp;
+		xp= (int)( BASE_XP*newXp);
 		cr=newCr;
+		ac=newAc;
+		hp=newHp;
 		attack=newAttack;
 		damage=newDamage;
+	}
+	
+	public Monster (Monster monster)
+	{
+		this(monster.myName,monster.attack, monster.damage, monster.ac, monster.hp, monster.xp, monster.cr);
 	}
 	
 	public void move(){
@@ -26,6 +34,10 @@ public class Monster extends Character{
 		else {
 			return (int) (Math.random()*8);
 		}
+	}
+	
+	public int getCR(){
+		return cr;
 	}
 	
 	public boolean attack(Character foe) {
