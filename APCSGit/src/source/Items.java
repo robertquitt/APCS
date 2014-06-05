@@ -9,6 +9,9 @@ public class Items implements Named {
 	final int id; //unique for each type of item
 	final String name; //name of item
 	
+	public Items(Items item) {
+		this(item.name,item.count,item.maxCount);
+	}
 	public Items(String name){
 		this(name,1);
 	}
@@ -35,8 +38,5 @@ public class Items implements Named {
 	public char getDisplayChar() {
 		return disp;
 	}
-	public Items clone()
-	{
-		return new Items(name, count, maxCount);
-	}
+	
 }
