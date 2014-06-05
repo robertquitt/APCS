@@ -35,6 +35,10 @@ public class Monster extends Character{
 		}
 	}
 	
+	public int getCR(){
+		return cr;
+	}
+	
 	public boolean attack(Character foe) {
 	if (attack>=foe.getAc()){
 		foe.setHp(foe.getHp()-(int)(Math.random()*damage));
