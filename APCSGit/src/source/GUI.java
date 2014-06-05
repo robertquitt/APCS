@@ -8,6 +8,7 @@ import java.awt.event.*;
 
 @SuppressWarnings("serial")
 public class GUI extends JFrame implements KeyListener{
+	private static GUI gui;
 	private Dungeon dungeon;
 	private Player player;
 	private ImageLoader il;
@@ -41,7 +42,7 @@ public class GUI extends JFrame implements KeyListener{
 			}
 		}
 		drawString(g,player.toString(), 100, 350);
-		drawString(g,player.getMyInv().toString(), 0, 0);
+		drawString(g,player.getMyInv().toString(), 400, 350);
 		System.out.println(player.getMyInv().toString());
 	}
 	@Override
@@ -90,7 +91,9 @@ public class GUI extends JFrame implements KeyListener{
 		}
 	}
 	public static void main(String[] args) {
-		GUI gui = new GUI();
-		gui.toString();
+		gui = new GUI();
+	}
+	public static void print(String str) {
+		gui.printConsole(str);
 	}
 }
