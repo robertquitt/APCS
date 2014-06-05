@@ -12,6 +12,7 @@ public class ItemEquipable extends Items {
 		super(name,1,1);
 		this.slot = slot;
 	}
+	
 
 	public EquipSlot getType()
 	{
@@ -32,6 +33,10 @@ public class ItemEquipable extends Items {
 		{
 			super(name, EquipSlot.HEAD);
 			specDef=def;
+		}
+		public Helm(Helm helm)
+		{
+			this(helm.name,helm.getDefense());
 		}
 			
 		public int getDefense()
@@ -54,6 +59,10 @@ public class ItemEquipable extends Items {
 			super(name, EquipSlot.CHEST);
 			specDef=def;
 		}
+		public Armor(Armor armor)
+		{
+			this(armor.name,armor.getDefense());
+		}
 			
 		public int getDefense()
 		{
@@ -73,6 +82,10 @@ public class ItemEquipable extends Items {
 			super(name, EquipSlot.LEGS);
 			specDef=def;
 		}
+		public Leggings(Leggings leggings)
+		{
+			this(leggings.name, leggings.getDefense());
+		}
 			
 		public int getDefense()
 		{
@@ -90,6 +103,10 @@ public class ItemEquipable extends Items {
 		{
 			super(name, EquipSlot.PRIMARY);
 			specAtt=att;
+		}
+		public oneHandWeapon(oneHandWeapon OneHandWeapon)
+		{
+			this(OneHandWeapon.name, OneHandWeapon.getAttack());
 		}
 			
 		public int getDefense()
@@ -110,7 +127,12 @@ public class ItemEquipable extends Items {
 			super(name, EquipSlot.PRIMARY);
 			specAtt=att;
 		}
-			
+		
+		public twoHandWeapon(twoHandWeapon TwoHandWeapon)
+		{
+			this(TwoHandWeapon.name, TwoHandWeapon.getAttack());
+		}
+
 		public int getDefense()
 		{
 			return 0;
@@ -128,6 +150,10 @@ public class ItemEquipable extends Items {
 			super(name, EquipSlot.SECONDARY);
 			specDef=def;
 		}
+		public shield (shield Shield)
+		{
+			this(Shield.name, Shield.getDefense());
+		}
 			
 		public int getDefense()
 		{
@@ -138,6 +164,7 @@ public class ItemEquipable extends Items {
 			return -1;
 		}
 	}
+	
 	
 	
 	
