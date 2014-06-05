@@ -24,15 +24,26 @@ public class Monster extends Character{
 	}
 	
 	public void move(){
-		
+		Location mLoc = getMove();
+		for (int tries=0;tries<5;tries++){
+			if (dungeon.getFeature(mLoc) instanceof Wall || dungeon.getFeature(mLoc) instanceof Door){
+				mLoc = getMove();
+			}
+			else if(mLoc.equals(dungeon.getPlayer().getLocation())); {
+				attack(dungeon.getPlayer());
+			} 
+			else {
+				moveTo(mLoc);
+			}
+		}
 	}
 	
-	public int getMove() {
+	public Location getMove() {
 		if (detectChar==true){
-			return 0;
+			return loc.getAdjacentLocation(loc.getDirectionToward(dungeon.getPlayer().getLocation()));
 		}
 		else {
-			return (int) (Math.random()*8);
+			return loc.getAdjacentLocation((int) (Math.random()*8)*45);
 		}
 	}
 	
