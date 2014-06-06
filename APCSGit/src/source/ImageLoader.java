@@ -18,6 +18,8 @@ public class ImageLoader {
 			images.put("floor", new ImageIcon(cldr.getResource("images\\floor1.png")).getImage());
 			images.put("player", new ImageIcon(cldr.getResource("images\\player.png")).getImage());
 			images.put("coins", new ImageIcon(cldr.getResource("images\\coin.png")).getImage());
+			images.put("Staircase", new ImageIcon(cldr.getResource("images\\stone_stairs_down.png")).getImage());
+			images.put("door", new ImageIcon(cldr.getResource("images\\openDoor.png")).getImage());
   		} 
      	catch (Exception e){
 			try{	
@@ -32,6 +34,6 @@ public class ImageLoader {
      	}
 	}
 	public Image getImage(Named obj) {
-		return obj==null?null:images.containsKey(obj.getName())?images.get(obj.getName()):images.get("blank");
+		return obj==null?images.get("blank"):images.containsKey(obj.getName())?images.get(obj.getName()):images.get("blank");
 	}
 }
