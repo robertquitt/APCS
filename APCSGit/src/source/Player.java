@@ -20,6 +20,10 @@ public class Player extends Character{
 		bag = new Inventory();
 		turns = 0;
 		xp = 0;
+		str = (int) Math.random()*8+10;
+		dex = (int) Math.random()*8+10;
+		con = (int) Math.random()*6+10;
+		hp = 6+(con-10)/2;
 	}
 
 	public void setMyName(String myName) {
@@ -100,9 +104,24 @@ public class Player extends Character{
 		if (xp>=(level)*1000){
 			level++;
 			xp=0;
+			levelup();
 		}
 	}
 
+	public void levelup(){
+		GUI.print(myName + " has advanced to level " + level);
+		int rand = (int) Math.random()*3+1;
+		if (rand==3){
+			str++;
+		}
+		else if (rand==2){
+			dex++;
+		}
+		else {
+			con++;
+		}
+		hp+=Math.random()*6+(con-10)/2;
+	}
 	public String toString(){
 		return (myName + " the level " + level + " " + myClass + "\n" + "HP AC STR DEX CON INT WIS CHA TURNS \n" + hp + " "+ ac + " "+ str + " "+ dex + " "+ con + " "+ intel + " "+ wis + " "+ cha + " "+ turns);
 	}
@@ -115,7 +134,11 @@ public class Player extends Character{
 		if (dungeon.isValid(toLoc)){
 			if (dungeon.getCharacter(toLoc) instanceof Monster){
 				attack(dungeon.getCharacter(toLoc));
-			} else if (dungeon.getFeature(toLoc)==null||dungeon.getFeature(toLoc).isTraversable()){
+			} 
+			else if (dungeon.getFeature(toLoc) instanceof Staircase){
+				dungeon.regenerate();
+			}
+			else if (dungeon.getFeature(toLoc)==null||dungeon.getFeature(toLoc).isTraversable()){
 				moveTo(toLoc);
 				if (!dungeon.getSquare(toLoc).getInv().isEmpty()) {
 					for (Iterator<Items> iter = dungeon.getSquare(toLoc).getInv().iterator(); iter.hasNext();) {

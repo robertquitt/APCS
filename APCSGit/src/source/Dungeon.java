@@ -30,11 +30,19 @@ public class Dungeon implements Iterable<Square>{
 		for (int i=0;i<rooms;i++){
 			generateRoom();
 		}
+		int monsters = (int) (Math.random()*10+10);
+		for (int i=0;i<monsters;i++){
+			spawn();
+		}
 		player = new Player("Dingus", 69);
 		player.putSelfInDungeon(this,new Location(1,1));
 		for (Square sq:this) {
 			sq.addItem(new Items("coins",1));
 		}
+	}
+	
+	public void regenerate(){
+		//needs to basically call construct again
 	}
 	
 	public void generateRoom() {
@@ -55,14 +63,39 @@ public class Dungeon implements Iterable<Square>{
 			}
 		}
 		for (int i=center.getRow()-radius;i<center.getRow()+radius;i++){
-			dgrid[i][center.getCol()-radius].setOccFeature(new Wall());
-			dgrid[i][center.getCol()+radius].setOccFeature(new Wall());
+			for (int j=center.getCol()-radius;j<=center.getCol()+radius;j++){
+				if (i==center.getRow()-radius || i==center.getRow()+radius || j==center.getRow()-radius || j==center.getRow()+radius) {
+					dgrid[i][j].setOccFeature(new Wall());
+				}
+				else {
+					dgrid[i][j].setOccFeature(new FloorTile());
+				}
+			}
 		}
-		for (int j=center.getCol()-radius;j<=center.getCol()+radius;j++){
-			dgrid[center.getRow()-radius][j].setOccFeature(new Wall());
-			dgrid[center.getRow()+radius][j].setOccFeature(new Wall());
+		oc=false;
+		Location exit;
+		while(!oc) {
+			exit = new Location ((int)Math.random()*ROWS,(int)Math.random()*COLS);
+			if (dgrid[exit.getRow()][exit.getCol()].getOccFeature() instanceof FloorTile){
+				oc = true;
+				dgrid[exit.getRow()][exit.getCol()].setOccFeature(new Staircase());
+			}
+		}
+		
+	}
+	
+	public void spawn(){
+		boolean oc = false;
+		Location loc;
+		while(!oc) {
+			loc = new Location ((int)Math.random()*ROWS,(int)Math.random()*COLS);
+			if (dgrid[loc.getRow()][loc.getCol()].getOccFeature() instanceof FloorTile){
+				oc = true;
+				//dgrid[loc.getRow()][loc.getCol()].setOccupant(new Monster()); randomly select monster to spawn
+			}
 		}
 	}
+	
 	public String printlvl() {
 		String s = "";
 		for (int x=0; x<ROWS;x++) {

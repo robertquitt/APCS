@@ -13,7 +13,7 @@ public class EquipData {
 	
 	static ItemEquipable zweihander = new ItemEquipable.twoHandWeapon("Zweihander",8);
 	static ItemEquipable flamberge = new ItemEquipable.twoHandWeapon("Flamberge",10);
-	static ItemEquipable claymore = new ItemEquipable.twoHandWeapon("Claymore",12);
+	static ItemEquipable greataxe = new ItemEquipable.twoHandWeapon("Greataxe",12);
 	
 	static ItemEquipable cuttingBoard = new ItemEquipable.shield("Wooden Shield", 1);
 	static ItemEquipable potLid = new ItemEquipable.shield("Pot Lid",2);
@@ -32,7 +32,7 @@ public class EquipData {
 	static ItemEquipable chainmail = new ItemEquipable.Armor("Chainmail",4);
 	static ItemEquipable ghettoPlate = new ItemEquipable.Armor("Ghetto Plate",5);
 	static ItemEquipable mithrilPlate = new ItemEquipable.Armor("Mithril Plate",6);
-			
+	
 	static ItemEquipable medievalSweats = new ItemEquipable.Leggings("Medieval Sweats",1);
 	static ItemEquipable CodPieceSweats = new ItemEquipable.Leggings("Codpiece Sweats",2);
 	static ItemEquipable YeOldeLevis = new ItemEquipable.Leggings("Ye Olde Levi's",3);

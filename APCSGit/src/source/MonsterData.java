@@ -2,9 +2,9 @@ package source;
 
 public class MonsterData {
 	/**
-	 * slime is basic grunt type monster	
+	 * snake is basic grunt type monster	
 	 */
-	static Monster slime = new Monster ("Slime",2,1,10,6,1.0,1), 
+	static Monster slime = new Monster ("Snake",2,1,10,6,1.0,1), 
 	/**
 	*  wolf is upgraded slime in some ways
 	*/	
