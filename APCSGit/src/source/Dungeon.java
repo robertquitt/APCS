@@ -41,6 +41,7 @@ public class Dungeon implements Iterable<Square>{
 		}
 		player = new Player("Dingus", 69);
 		player.putSelfInDungeon(this,new Location(1,1));
+		//player.bag.add();
 		for (Square sq:this) {
 			sq.addItem(new Items("coins",1));
 		}
@@ -67,10 +68,20 @@ public class Dungeon implements Iterable<Square>{
 				oc = true;
 			}
 		}
+		boolean hasD = false;
 		for (int i=center.getRow()-radius;i<center.getRow()+radius;i++){
-			for (int j=center.getCol()-radius;j<=center.getCol()+radius;j++){
+			for (int j=center.getCol()-radius;j<=center.getCol()+radius;j++){				
 				if (i==center.getRow()-radius || i==center.getRow()+radius || j==center.getRow()-radius || j==center.getRow()+radius) {
-					dgrid[i][j].setOccFeature(new Wall());
+					if (!hasD && (int) Math.random()*20==1) {
+						dgrid[i][j].setOccFeature(new Door());
+						hasD = true;
+					}
+					else{
+						dgrid[i][j].setOccFeature(new Wall());
+					}
+				}
+				else if (dgrid[i][j].getOccFeature() instanceof MapFeature) {
+					
 				}
 				else {
 					dgrid[i][j].setOccFeature(new FloorTile());
