@@ -15,6 +15,7 @@ public class Dungeon implements Iterable<Square>{
 				dgrid[r][c] = new Square();
 			}
 		}
+		player = new Player("Dingus", 69);
 		construct();
 	}
 	private void construct() {
@@ -39,7 +40,6 @@ public class Dungeon implements Iterable<Square>{
 		for (int i=0;i<monsters;i++){
 			genItem();
 		}
-		player = new Player("Dingus", 69);
 		player.putSelfInDungeon(this,new Location(1,1));
 		//player.bag.add();
 		for (Square sq:this) {
@@ -48,7 +48,12 @@ public class Dungeon implements Iterable<Square>{
 	}
 	
 	public void regenerate(){
-		//needs to basically call construct again
+		for (Square i : this){
+			i.setOccFeature(null);
+			i.setOccupant(null);
+		}
+		construct();
+		
 	}
 	
 	public void generateRoom() {
