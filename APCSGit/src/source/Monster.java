@@ -29,7 +29,7 @@ public class Monster extends Character{
 			if (dungeon.getFeature(mLoc) instanceof Wall || dungeon.getFeature(mLoc) instanceof Door){
 				mLoc = getMove();
 			}
-			else if(mLoc.equals(dungeon.getPlayer().getLocation())); {
+			else if(mLoc.equals(dungeon.getPlayer().getLocation())) {
 				attack(dungeon.getPlayer());
 			} 
 			else {
