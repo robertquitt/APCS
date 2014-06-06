@@ -19,6 +19,9 @@ public class Dungeon implements Iterable<Square>{
 		construct();
 	}
 	private void construct() {
+		for (Square i:this){
+			i.setOccFeature(new FloorTile());
+		}
 		for(int r = 0; r<ROWS; r++) {
 			dgrid[r][0].setOccFeature(new Wall());
 			dgrid[r][COLS-1].setOccFeature(new Wall());
@@ -27,20 +30,21 @@ public class Dungeon implements Iterable<Square>{
 			dgrid[0][c].setOccFeature(new Wall());
 			dgrid[ROWS-1][c].setOccFeature(new Wall());
 		}
-		int rooms = (int)(Math.random()*5)+4;
+		/*int rooms = (int)(Math.random()*5)+4;
 		for (int i=0;i<rooms;i++){
 			generateRoom();
 		}
 		int monsters = (int) (Math.random()*10+10);
 		for (int i=0;i<monsters;i++){
 			spawn();
-		}
+		}*/
 		
 		/*int items = (int) (Math.random()*8+8);
 		for (int i=0;i<monsters;i++){
 			genItem();
 		}*/
 		player.putSelfInDungeon(this,new Location(1,1));
+		new Monster(MonsterData.barbarian).putSelfInDungeon(this, new Location(5,5));
 		/*for (Square sq:this) {
 			sq.addItem(new Items("coins",1));
 		}*/

@@ -45,7 +45,12 @@ public class Inventory implements Iterable<Items>{
 	}
 	
 	public boolean isEmpty(){
-		return inv.isEmpty();
+		if (inv.isEmpty()){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 	
 	public Items get(int num) {

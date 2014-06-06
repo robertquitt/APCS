@@ -20,10 +20,10 @@ public class Square {
 	public Named getDisplayedObject() {
 		if (occupant!=null) {
 			return occupant; 
-		}else if (!inv.isEmpty()){
-			return inv.getDisplayedObject();
-		}else{ 
+		}else if (occFeature!=null){
 			return occFeature;
+		}else{ 
+			return inv.getDisplayedObject();
 		}
 	}
 
