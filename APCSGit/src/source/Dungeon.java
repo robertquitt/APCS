@@ -34,6 +34,11 @@ public class Dungeon implements Iterable<Square>{
 		for (int i=0;i<monsters;i++){
 			spawn();
 		}
+		
+		int items = (int) (Math.random()*8+8);
+		for (int i=0;i<monsters;i++){
+			genItem();
+		}
 		player = new Player("Dingus", 69);
 		player.putSelfInDungeon(this,new Location(1,1));
 		for (Square sq:this) {
@@ -92,6 +97,18 @@ public class Dungeon implements Iterable<Square>{
 			if (dgrid[loc.getRow()][loc.getCol()].getOccFeature() instanceof FloorTile){
 				oc = true;
 				//dgrid[loc.getRow()][loc.getCol()].setOccupant(new Monster()); randomly select monster to spawn
+			}
+		}
+	}
+	
+	public void genItem(){
+		boolean oc = false;
+		Location loc;
+		while(!oc) {
+			loc = new Location ((int)Math.random()*ROWS,(int)Math.random()*COLS);
+			if (dgrid[loc.getRow()][loc.getCol()].getOccFeature() instanceof FloorTile){
+				oc = true;
+				//dgrid[loc.getRow()][loc.getCol()].setOccupant(new ItemEquipable()); randomly select monster to spawn
 			}
 		}
 	}
