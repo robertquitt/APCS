@@ -36,15 +36,14 @@ public class Dungeon implements Iterable<Square>{
 			spawn();
 		}
 		
-		int items = (int) (Math.random()*8+8);
+		/*int items = (int) (Math.random()*8+8);
 		for (int i=0;i<monsters;i++){
 			genItem();
-		}
+		}*/
 		player.putSelfInDungeon(this,new Location(1,1));
-		//player.bag.add();
-		for (Square sq:this) {
+		/*for (Square sq:this) {
 			sq.addItem(new Items("coins",1));
-		}
+		}*/
 	}
 	
 	public void regenerate(){
@@ -74,7 +73,7 @@ public class Dungeon implements Iterable<Square>{
 			}
 		}
 		boolean hasD = false;
-		for (int i=center.getRow()-radius;i<center.getRow()+radius;i++){
+		for (int i=center.getRow()-radius;i<=center.getRow()+radius;i++){
 			for (int j=center.getCol()-radius;j<=center.getCol()+radius;j++){				
 				if (i==center.getRow()-radius || i==center.getRow()+radius || j==center.getRow()-radius || j==center.getRow()+radius) {
 					if (!hasD && (int) Math.random()*20==1) {
@@ -94,14 +93,14 @@ public class Dungeon implements Iterable<Square>{
 			}
 		}
 		oc=false;
-		Location exit;
+		/*Location exit;
 		while(!oc) {
 			exit = new Location ((int)Math.random()*ROWS,(int)Math.random()*COLS);
 			if (dgrid[exit.getRow()][exit.getCol()].getOccFeature() instanceof FloorTile){
 				oc = true;
 				dgrid[exit.getRow()][exit.getCol()].setOccFeature(new Staircase());
 			}
-		}
+		}*/
 		
 	}
 	
